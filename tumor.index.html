@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julho Verde o Ano Inteiro</title>
+<style>
+    /* Reset e tipografia */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family: Arial, sans-serif; line-height:1.6; background-color:#ffffff; color:#333;}
+    
+    /* Menu fixo */
+    header {position:fixed; top:0; width:100%; background:#004080; color:white; z-index:1000;}
+    header h1 {padding:15px; text-align:center;}
+    nav {display:flex; justify-content:center; background:#0059b3;}
+    nav a {
+        display:inline-block;
+        color:white;
+        text-decoration:none;
+        padding:15px 20px;
+        font-weight:bold;
+        transition:0.3s;
+    }
+    nav a:hover {background:#0073e6;}
+
+    /* Espaço para compensar header fixo */
+    .spacer {height:110px;}
+
+    /* Seções */
+    section {padding:40px 20px; max-width:1000px; margin:auto;}
+    section h2 {color:#004080; margin-bottom:20px; text-align:center;}
+    section p {margin-bottom:20px;}
+
+    /* Cards */
+    .container {display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
+    .card {
+        flex:1 1 300px;
+        background:#f9f9f9;
+        padding:20px;
+        border-radius:8px;
+        box-shadow:2px 2px 10px rgba(0,0,0,0.1);
+        text-align:left;
+    }
+
+    /* Botões */
+    .button {display:inline-block; padding:10px 15px; background:#004080; color:white; text-decoration:none; border-radius:5px; margin-top:10px;}
+    .button:hover {background:#0073e6;}
+
+    /* Footer */
+    footer {text-align:center; padding:20px; background:#e6e6e6; margin-top:20px; font-size:14px;}
+
+    /* Imagens placeholders */
+    .placeholder {
+        width:100%; height:200px; background:#cccccc;
+        display:flex; align-items:center; justify-content:center;
+        color:#666; font-size:18px; border-radius:8px; margin-bottom:20px;
+    }
+
+    /* Scroll suave */
+    html {scroll-behavior:smooth;}
+
+    /* Responsividade */
+    @media(max-width:600px){
+        nav {flex-direction:column;}
+        .container {flex-direction:column;}
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Julho Verde o Ano Inteiro</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#profissionais">Profissionais</a>
+        <a href="#populacao">População</a>
+        <a href="#hpv">HPV & Prevenção</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
+</header>
+
+<div class="spacer"></div>
+
+<section id="home">
+    <h2>Bem-vindo ao Julho Verde o Ano Inteiro</h2>
+    <div class="placeholder">Espaço para banner principal</div>
+    <p>O câncer de cabeça e pescoço é um grupo de tumores que acomete boca, faringe, laringe, cavidade nasal e glândulas salivares. Quando identificado precocemente, apresenta altas chances de cura. Este site reúne informações para profissionais de saúde e população em geral, promovendo prevenção e detecção precoce durante todo o ano.</p>
+</section>
+
+<section id="profissionais">
+    <h2>Profissionais de Saúde</h2>
+    <p>Material para médicos, enfermeiros, dentistas e agentes comunitários de saúde, auxiliando na identificação precoce de tumores de cabeça e pescoço.</p>
+    <div class="container">
+        <div class="card">
+            <h3>Sinais de alerta</h3>
+            <ul>
+                <li>Ferida na boca que não cicatriza</li>
+                <li>Dificuldade ou dor para engolir</li>
+                <li>Rouquidão persistente</li>
+                <li>Nódulo no pescoço</li>
+                <li>Dor de ouvido sem causa aparente</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Conduta profissional</h3>
+            <ul>
+                <li>Investigar histórico de tabagismo e consumo de álcool</li>
+                <li>Registrar achados suspeitos em ficha clínica</li>
+                <li>Encaminhar pacientes para avaliação especializada</li>
+                <li>Orientar medidas preventivas</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="populacao">
+    <h2>População</h2>
+    <div class="placeholder">Espaço para imagem ilustrativa população</div>
+    <p>Incentivando prevenção e busca precoce de atendimento médico.</p>
+    <div class="container">
+        <div class="card">
+            <h3>Fique atento</h3>
+            <ul>
+                <li>Ferida na boca que não cicatriza</li>
+                <li>Dificuldade ou dor para engolir</li>
+                <li>Rouquidão que não passa</li>
+                <li>Caroço no pescoço</li>
+                <li>Mau hálito constante</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Como se prevenir</h3>
+            <ul>
+                <li>Evitar fumo e álcool</li>
+                <li>Manter boa higiene bucal</li>
+                <li>Alimentação rica em frutas e verduras</li>
+                <li>Vacinação contra HPV</li>
+                <li>Uso de preservativos nas relações sexuais</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="hpv">
+    <h2>HPV & Prevenção</h2>
+    <div class="placeholder">Espaço para imagem HPV</div>
+    <div class="container">
+        <div class="card">
+            <h3>Vacina HPV</h3>
+            <p>Disponível gratuitamente no SUS. Recomendada para adolescentes antes do início da vida sexual.</p>
+        </div>
+        <div class="card">
+            <h3>Medidas preventivas</h3>
+            <ul>
+                <li>Evitar tabaco e álcool</li>
+                <li>Higiene oral adequada</li>
+                <li>Consulta médica ao menor sinal de alerta</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="sobre">
+    <h2>Sobre</h2>
+    <p>Produzido por <strong>Denise Pereira – Curso de Medicina, FAMEAC</strong> como material educativo sobre câncer de cabeça e pescoço, com foco em prevenção e detecção precoce ao longo do ano.</p>
+</section>
+
+<footer>
+    <p>Faculdade de Medicina de Açailândia – FAMEAC | Produzido por Denise Pereira – Curso de Medicina</p>
+</footer>
+
+</body>
+</html>
