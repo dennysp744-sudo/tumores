@@ -4,66 +4,95 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julho Verde o Ano Inteiro</title>
+<meta name="description" content="Informações educativas sobre prevenção e detecção precoce do câncer de cabeça e pescoço.">
+
 <style>
-    /* Reset e tipografia */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family: Arial, sans-serif; line-height:1.6; background-color:#ffffff; color:#333;}
-    
-    /* Menu fixo */
-    header {position:fixed; top:0; width:100%; background:#004080; color:white; z-index:1000;}
-    header h1 {padding:15px; text-align:center;}
-    nav {display:flex; justify-content:center; background:#0059b3;}
-    nav a {
-        display:inline-block;
-        color:white;
-        text-decoration:none;
-        padding:15px 20px;
-        font-weight:bold;
-        transition:0.3s;
-    }
-    nav a:hover {background:#0073e6;}
+/* Reset e tipografia */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: 'Arial', sans-serif; line-height:1.6; background:#f0fff0; color:#1b3b1b; scroll-padding-top:110px;}
 
-    /* Espaço para compensar header fixo */
-    .spacer {height:110px;}
+/* Header fixo */
+header {
+    position:fixed; top:0; width:100%; background:#2e7d32; color:white; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+header h1 {padding:15px; text-align:center;}
+nav {display:flex; justify-content:center; background:#388e3c;}
+nav a {display:inline-block; color:white; text-decoration:none; padding:15px 20px; font-weight:bold; transition:0.3s;}
+nav a:hover, nav a.active {background:#66bb6a;}
 
-    /* Seções */
-    section {padding:40px 20px; max-width:1000px; margin:auto;}
-    section h2 {color:#004080; margin-bottom:20px; text-align:center;}
-    section p {margin-bottom:20px;}
+/* Banner principal */
+.banner {
+    width:100%;
+    height:400px;
+    background: linear-gradient(rgba(46,125,50,0.7), rgba(102,187,106,0.7)), url('https://source.unsplash.com/1200x400/?medical,health') center/cover no-repeat;
+    display:flex; align-items:center; justify-content:center; color:white; text-align:center; flex-direction:column;
+    opacity:0; transform: translateY(30px); transition: all 1s ease;
+}
+.banner.visible {opacity:1; transform: translateY(0);}
+.banner h2 {font-size:2.5rem; margin-bottom:20px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);}
+.banner p {font-size:1.2rem; max-width:800px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);}
 
-    /* Cards */
-    .container {display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
-    .card {
-        flex:1 1 300px;
-        background:#f9f9f9;
-        padding:20px;
-        border-radius:8px;
-        box-shadow:2px 2px 10px rgba(0,0,0,0.1);
-        text-align:left;
-    }
+/* Seções */
+main section {padding:60px 20px; max-width:1000px; margin:auto; opacity:0; transform: translateY(30px); transition: all 1s ease;}
+main section.visible {opacity:1; transform: translateY(0);}
+section h2 {color:#2e7d32; margin-bottom:30px; text-align:center; font-size:2rem;}
+section p {margin-bottom:20px; font-size:1rem;}
 
-    /* Botões */
-    .button {display:inline-block; padding:10px 15px; background:#004080; color:white; text-decoration:none; border-radius:5px; margin-top:10px;}
-    .button:hover {background:#0073e6;}
+/* Container de cards */
+.container {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap:20px;
+    justify-items:center;
+}
 
-    /* Footer */
-    footer {text-align:center; padding:20px; background:#e6e6e6; margin-top:20px; font-size:14px;}
+/* Cards */
+.card {
+    background:#e8f5e9;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:2px 2px 12px rgba(0,0,0,0.1);
+    text-align:left;
+    transition: all 0.3s ease, opacity 1s ease, transform 1s ease;
+    opacity:0; transform: translateY(30px);
+}
+.card.visible {opacity:1; transform: translateY(0);}
+.card:hover {transform: translateY(-5px); box-shadow:4px 4px 20px rgba(0,0,0,0.2);}
+.card img {width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:15px;}
+.card .icon {font-size:40px; text-align:center; margin-bottom:15px; color:#2e7d32;}
 
-    /* Imagens placeholders */
-    .placeholder {
-        width:100%; height:200px; background:#cccccc;
-        display:flex; align-items:center; justify-content:center;
-        color:#666; font-size:18px; border-radius:8px; margin-bottom:20px;
-    }
+/* Botões */
+.button {
+    display:inline-block;
+    padding:12px 20px;
+    font-weight:bold;
+    text-decoration:none;
+    color:white;
+    border-radius:8px;
+    margin-top:10px;
+    transition: all 0.3s ease;
+}
+.button.cta {
+    background: linear-gradient(45deg, #43a047, #66bb6a);
+}
+.button.cta:hover {
+    background: linear-gradient(45deg, #66bb6a, #81c784);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
 
-    /* Scroll suave */
-    html {scroll-behavior:smooth;}
+/* Footer */
+footer {text-align:center; padding:20px; background:#c8e6c9; margin-top:20px; font-size:14px;}
 
-    /* Responsividade */
-    @media(max-width:600px){
-        nav {flex-direction:column;}
-        .container {flex-direction:column;}
-    }
+/* Scroll suave */
+html {scroll-behavior:smooth;}
+
+/* Responsividade */
+@media(max-width:600px){
+    nav {flex-direction:column;}
+    .banner {height:300px;}
+    .banner h2 {font-size:2rem;}
+    .banner p {font-size:1rem;}
+}
 </style>
 </head>
 <body>
@@ -79,12 +108,11 @@
     </nav>
 </header>
 
-<div class="spacer"></div>
-
-<section id="home">
-    <h2>Bem-vindo ao Julho Verde o Ano Inteiro</h2>
-    <div class="placeholder">Espaço para banner principal</div>
-    <p>O câncer de cabeça e pescoço é um grupo de tumores que acomete boca, faringe, laringe, cavidade nasal e glândulas salivares. Quando identificado precocemente, apresenta altas chances de cura. Este site reúne informações para profissionais de saúde e população em geral, promovendo prevenção e detecção precoce durante todo o ano.</p>
+<main>
+<section id="home" class="banner">
+    <h2>Previna e Detecte Precoce</h2>
+    <p>Informações sobre câncer de cabeça e pescoço para profissionais de saúde e população em geral.</p>
+    <a href="#populacao" class="button cta">Saiba Mais</a>
 </section>
 
 <section id="profissionais">
@@ -92,6 +120,12 @@
     <p>Material para médicos, enfermeiros, dentistas e agentes comunitários de saúde, auxiliando na identificação precoce de tumores de cabeça e pescoço.</p>
     <div class="container">
         <div class="card">
+            <div class="icon">
+                <!-- Ícone alerta -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1 1 0 0 0-1.964 0L.165 13.233c-.457.778.091 1.767.982 1.767h13.706c.89 0 1.439-.99.982-1.767L8.982 1.566zm-.982.934 6.857 10.667H1.143L8 2.5zm.002 7.33a.5.5 0 1 1-1 0v-2a.5.5 0 0 1 1 0v2zm0 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                </svg>
+            </div>
             <h3>Sinais de alerta</h3>
             <ul>
                 <li>Ferida na boca que não cicatriza</li>
@@ -102,6 +136,12 @@
             </ul>
         </div>
         <div class="card">
+            <div class="icon">
+                <!-- Ícone conduta -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
+                  <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm1 12H7v-2h2zm0-4H7V4h2z"/>
+                </svg>
+            </div>
             <h3>Conduta profissional</h3>
             <ul>
                 <li>Investigar histórico de tabagismo e consumo de álcool</li>
@@ -115,10 +155,15 @@
 
 <section id="populacao">
     <h2>População</h2>
-    <div class="placeholder">Espaço para imagem ilustrativa população</div>
     <p>Incentivando prevenção e busca precoce de atendimento médico.</p>
     <div class="container">
         <div class="card">
+            <div class="icon">
+                <!-- Ícone atenção população -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1 1 0 0 0-1.964 0L.165 13.233c-.457.778.091 1.767.982 1.767h13.706c.89 0 1.439-.99.982-1.767L8.982 1.566zM8 5a.5.5 0 0 1 .5.5v2.5a.5.5 0 0 1-1 0V5.5A.5.5 0 0 1 8 5zm0 6a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/>
+                </svg>
+            </div>
             <h3>Fique atento</h3>
             <ul>
                 <li>Ferida na boca que não cicatriza</li>
@@ -127,8 +172,15 @@
                 <li>Caroço no pescoço</li>
                 <li>Mau hálito constante</li>
             </ul>
+            <a href="#hpv" class="button cta">Vacine-se</a>
         </div>
         <div class="card">
+            <div class="icon">
+                <!-- Ícone prevenção -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
+                  <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm3.646 5.146a.5.5 0 1 1 .708.708L7.707 10.5l-2.147-2.146a.5.5 0 0 1 .708-.708L7.707 9.293l4.939-4.147z"/>
+                </svg>
+            </div>
             <h3>Como se prevenir</h3>
             <ul>
                 <li>Evitar fumo e álcool</li>
@@ -143,13 +195,24 @@
 
 <section id="hpv">
     <h2>HPV & Prevenção</h2>
-    <div class="placeholder">Espaço para imagem HPV</div>
     <div class="container">
         <div class="card">
+            <div class="icon">
+                <!-- Ícone vacina -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
+                  <path d="M8 0a2 2 0 0 0-2 2v2h4V2a2 2 0 0 0-2-2zm6 6v1h-1V6h1zm-12 0v1H1V6h1zm1 1h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
+                </svg>
+            </div>
             <h3>Vacina HPV</h3>
             <p>Disponível gratuitamente no SUS. Recomendada para adolescentes antes do início da vida sexual.</p>
         </div>
         <div class="card">
+            <div class="icon">
+                <!-- Ícone medidas preventivas -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
+                  <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm3.646 5.646a.5.5 0 1 1 .708.708L7.707 10.5l-2.147-2.146a.5.5 0 0 1 .708-.708L7.707 9.293l4.939-4.147z"/>
+                </svg>
+            </div>
             <h3>Medidas preventivas</h3>
             <ul>
                 <li>Evitar tabaco e álcool</li>
@@ -164,10 +227,43 @@
     <h2>Sobre</h2>
     <p>Produzido por <strong>Denise Pereira – Curso de Medicina, FAMEAC</strong> como material educativo sobre câncer de cabeça e pescoço, com foco em prevenção e detecção precoce ao longo do ano.</p>
 </section>
+</main>
 
 <footer>
-    <p>Faculdade de Medicina de Açailândia – FAMEAC | Produzido para a matéria de proliferação celular – Curso de Medicina</p>
+    <p>Faculdade de Medicina de Açailândia – FAMEAC | Produzido por Denise Pereira – Curso de Medicina</p>
 </footer>
+
+<script>
+// Função para animação de scroll
+function revealOnScroll() {
+    const elements = document.querySelectorAll('.card, section.banner, main section');
+    const windowHeight = window.innerHeight;
+    elements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if(elementTop < windowHeight - 100) el.classList.add('visible');
+    });
+}
+
+// Função scrollspy
+function scrollSpy() {
+    const sections = document.querySelectorAll('main section');
+    const navLinks = document.querySelectorAll('nav a');
+    const scrollPos = window.scrollY + 120;
+
+    sections.forEach(section => {
+        if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${section.id}`) link.classList.add('active');
+            });
+        }
+    });
+}
+
+window.addEventListener('scroll', () => { revealOnScroll(); scrollSpy(); });
+window.addEventListener('load', () => { revealOnScroll(); scrollSpy(); });
+</script>
 
 </body>
 </html>
+
