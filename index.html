@@ -46,7 +46,7 @@ nav a:hover, nav a.active {
 main {
     display: flex;
     width: 400%;
-    transition: transform 0.4s ease; /* Transição mais rápida */
+    transition: transform 0.4s ease;
     height: calc(100vh - 120px);
 }
 
@@ -148,6 +148,20 @@ footer a {
 }
 #seta-esquerda { left: 20px; }
 #seta-direita { right: 20px; }
+
+/* ======= LINKS ACS ======= */
+.links-acs {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #d0f0c0;
+    border-radius: 10px;
+}
+.links-acs a {
+    display: block;
+    color: #1b5e20;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
 </style>
 </head>
 
@@ -167,12 +181,14 @@ footer a {
 <button id="seta-direita" class="seta" onclick="navegar(1)">›</button>
 
 <main id="container">
+    <!-- INÍCIO -->
     <section id="inicio">
         <h2>Bem-vindo</h2>
         <p>O <strong>Julho Verde o Ano Inteiro</strong> é uma campanha educativa sobre câncer de cabeça e pescoço, promovendo conscientização durante todo o ano.</p>
         <p>Explore as seções para saber mais sobre prevenção, sinais de alerta e ações voltadas à população e aos profissionais de saúde.</p>
     </section>
 
+    <!-- POPULAÇÃO -->
     <section id="populacao">
         <h2>Informações para a População</h2>
         <p>O diagnóstico precoce é a chave para aumentar as chances de cura. Fique atento aos sintomas e procure atendimento médico se perceber alterações persistentes.</p>
@@ -195,6 +211,7 @@ footer a {
         </div>
     </section>
 
+    <!-- PROFISSIONAIS / ACS -->
     <section id="profissionais">
         <h2>Recursos para Profissionais de Saúde</h2>
         <p>O diagnóstico precoce depende do olhar clínico atento. Profissionais devem estar capacitados para identificar sinais precoces e encaminhar adequadamente.</p>
@@ -202,50 +219,50 @@ footer a {
             <div class="card">
                 <div class="icon">🔬</div>
                 <h3>Detecção Precoce</h3>
-                <p>Realizar exame físico detalhado da cavidade oral, orofaringe e pescoço em consultas de rotina é fundamental.</p>
+                <p>Exame físico detalhado da cavidade oral, orofaringe e pescoço em consultas de rotina é fundamental.</p>
             </div>
             <div class="card">
                 <div class="icon">📚</div>
                 <h3>Educação Continuada</h3>
-                <p>Promover capacitações e campanhas permanentes entre equipes de atenção básica e especialistas.</p>
+                <p>Capacitações e campanhas permanentes entre equipes de atenção básica e especialistas.</p>
             </div>
             <div class="card">
                 <div class="icon">👥</div>
                 <h3>Acolhimento Integral</h3>
-                <p>O cuidado deve abranger prevenção, diagnóstico, tratamento e reabilitação, com abordagem multiprofissional.</p>
+                <p>Prevenção, diagnóstico, tratamento e reabilitação, com abordagem multiprofissional.</p>
             </div>
+        </div>
+
+        <!-- Links oficiais para ACS -->
+        <div class="links-acs">
+            <h3>Diretrizes Oficiais e Materiais de Referência</h3>
+            <a href="#" target="_blank">Diretrizes de Diagnóstico – Ministério da Saúde</a>
+            <a href="#" target="_blank">Protocolos Terapêuticos – Ministério da Saúde</a>
+            <a href="#" target="_blank">Material Educativo ACS</a>
         </div>
     </section>
 
+    <!-- SOBRE -->
     <section id="sobre">
         <h2>Sobre o Projeto</h2>
         <p>Este site foi desenvolvido por <strong>Denise Pereira – Curso de Medicina, FAMEAC</strong> como parte de uma iniciativa educativa sobre o câncer de cabeça e pescoço.</p>
         <p>O objetivo é manter o tema vivo além do mês de julho, promovendo conhecimento e conscientização de forma acessível à comunidade.</p>
+        <h3>Créditos dos Alunos Participantes</h3>
+        <ul>
+            <li>Denise Pereira</li>
+            <li>Paulo Roberto</li>
+            <li>Amanda Karolinne</li>
+            <li>Gustavo Mesquita</li>
+        </ul>
     </section>
 </main>
 
 <footer>
-  <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 0 20px;">
-    <div style="width: 120px; height: 60px; display: flex; align-items: center; justify-content: center;">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDbaQIqpbSWxAKxBhDg1vibC4tvuruCruM1g&s"
-           alt="Logomarca FAMEAC"
-           style="max-height: 60px; width: auto; border-radius: 8px;">
-    </div>
-    <div style="flex: 2; min-width: 280px; text-align: center; margin-top: 10px;">
-      <p><strong>Realização:</strong> FAMEAC – Faculdade de Medicina de Açailândia</p>
-      <p><strong>Projeto:</strong> Site feito para a disciplina de Proliferação Celular<br>
-      <strong>Grupo:</strong> Denise Pereira, Paulo Roberto, Amanda Karolinne, Gustavo Mesquita</p>
-      <p><strong>Desenvolvimento Web:</strong> Denise Pereira – Estudante de Medicina (FAMEAC)</p>
-    </div>
-    <div style="flex: 1; min-width: 200px; text-align: right;">
-      <a href="#">Políticas de Uso</a><br>
-      <a href="#">Contato</a><br>
-      <a href="#">Acessibilidade</a>
-    </div>
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <p><strong>Realização:</strong> FAMEAC – Faculdade de Medicina de Açailândia</p>
+    <p><strong>Desenvolvimento Web:</strong> Denise Pereira – Estudante de Medicina (FAMEAC)</p>
   </div>
-  <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #b0f2c2;">
-    © 2025 FAMEAC. Todos os direitos reservados.
-  </div>
+  <p style="margin-top: 15px; font-size: 12px;">© 2025 FAMEAC. Todos os direitos reservados.</p>
 </footer>
 
 <script>
@@ -266,12 +283,10 @@ function navegar(direcao) {
     if (indiceAtual >= totalSecoes) indiceAtual = totalSecoes - 1;
     mudarSecao(indiceAtual);
 }
-
-window.onload = () => mudarSecao(0);
 </script>
-
 </body>
 </html>
+
 
 
 
