@@ -4,112 +4,174 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julho Verde o Ano Inteiro</title>
-<meta name="description" content="Informações educativas sobre prevenção e detecção precoce do câncer de cabeça e pescoço.">
-
 <style>
 /* Reset e tipografia */
 * {margin:0; padding:0; box-sizing:border-box;}
-body {font-family: 'Arial', sans-serif; line-height:1.6; background:#f0fff0; color:#1b3b1b; scroll-padding-top:110px;}
+body {
+    font-family: Arial, sans-serif;
+    line-height:1.6;
+    background-color:#ffffff;
+    color:#333;
+    overflow-x:hidden;
+}
 
-/* Header fixo */
+/* Cores principais */
+:root {
+    --verde-escuro: #1b5e20;
+    --verde-medio: #2e7d32;
+    --verde-claro: #a5d6a7;
+}
+
+/* Menu fixo */
 header {
-    position:fixed; top:0; width:100%; background:#2e7d32; color:white; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);
-}
-header h1 {padding:15px; text-align:center;}
-nav {display:flex; justify-content:center; background:#388e3c;}
-nav a {display:inline-block; color:white; text-decoration:none; padding:15px 20px; font-weight:bold; transition:0.3s;}
-nav a:hover, nav a.active {background:#66bb6a;}
-
-/* Banner de cada seção */
-.section-banner {
+    position:fixed;
+    top:0;
     width:100%;
-    height:250px;
-    display:flex; align-items:center; justify-content:center;
-    color:white; text-align:center; flex-direction:column;
-    margin-bottom:20px; border-radius:12px; overflow:hidden;
-    background-size:cover; background-position:center; position:relative;
+    background:var(--verde-escuro);
+    color:white;
+    z-index:1000;
 }
-.section-banner::after {
-    content:""; position:absolute; top:0; left:0; width:100%; height:100%;
-    background:rgba(46,125,50,0.5);
+header h1 {
+    padding:15px;
+    text-align:center;
+}
+nav {
+    display:flex;
+    justify-content:center;
+    background:var(--verde-medio);
+}
+nav a {
+    display:inline-block;
+    color:white;
+    text-decoration:none;
+    padding:15px 20px;
+    font-weight:bold;
+    transition:0.3s;
+}
+nav a:hover {
+    background:var(--verde-claro);
+    color:var(--verde-escuro);
 }
 
-/* Seções */
-main section {padding:60px 20px; max-width:1000px; margin:auto; opacity:0; transform: translateY(30px); transition: all 1s ease;}
-main section.visible {opacity:1; transform: translateY(0);}
-section h2 {color:#2e7d32; margin-bottom:30px; text-align:center; font-size:2rem;}
-section p {margin-bottom:20px; font-size:1rem;}
-
-/* Container de cards */
-.container {
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap:20px;
-    justify-items:center;
+/* Container geral horizontal */
+.main-container {
+    display:flex;
+    flex-direction:row;
+    width:500vw; /* 5 seções principais */
+    transition: transform 1s ease;
 }
+
+/* Cada seção ocupa 100% da tela */
+section {
+    width:100vw;
+    height:100vh;
+    padding:120px 40px 40px 40px;
+    flex-shrink:0;
+    overflow-y:auto;
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity 1s ease, transform 1s ease;
+}
+section.ativo {
+    opacity:1;
+    transform:translateY(0);
+}
+section h2 {
+    color:var(--verde-escuro);
+    margin-bottom:20px;
+    text-align:center;
+}
+section p {margin-bottom:20px;}
 
 /* Cards */
-.card {
-    background:#e8f5e9;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:2px 2px 12px rgba(0,0,0,0.1);
-    text-align:left;
-    transition: all 0.3s ease, opacity 1s ease, transform 1s ease;
-    opacity:0; transform: translateY(30px);
+.container {
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
 }
-.card.visible {opacity:1; transform: translateY(0);}
-.card:hover {transform: translateY(-5px); box-shadow:4px 4px 20px rgba(0,0,0,0.2);}
-.card img {width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:15px;}
+.card {
+    flex:1 1 300px;
+    background:#f9f9f9;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:2px 2px 10px rgba(0,0,0,0.1);
+    text-align:left;
+    transition:transform 0.3s;
+}
+.card:hover {transform:translateY(-5px);}
+.card h3 {color:var(--verde-medio); margin-bottom:10px;}
+.card ul {margin-left:20px;}
 
-/* Ícones animados nos cards */
+/* Ícones animados */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
-.card .icon {
+.icon {
     font-size:40px;
     text-align:center;
     margin-bottom:15px;
-    color:#2e7d32;
-    animation: pulse 2s infinite;
-    transition: transform 0.3s ease;
+    color:var(--verde-medio);
+    animation:pulse 2s infinite;
+    transition:transform 0.3s ease;
 }
-.card:hover .icon {
-    transform: scale(1.3);
-}
+.card:hover .icon {transform:scale(1.3);}
 
-/* Botões */
-.button {
-    display:inline-block;
-    padding:12px 20px;
-    font-weight:bold;
-    text-decoration:none;
-    color:white;
+/* Placeholder para imagens */
+.placeholder {
+    width:100%;
+    height:200px;
+    background:var(--verde-claro);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#1b5e20;
+    font-size:18px;
     border-radius:8px;
-    margin-top:10px;
-    transition: all 0.3s ease;
-}
-.button.cta {
-    background: linear-gradient(45deg, #43a047, #66bb6a);
-}
-.button.cta:hover {
-    background: linear-gradient(45deg, #66bb6a, #81c784);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom:20px;
 }
 
 /* Footer */
-footer {text-align:center; padding:20px; background:#c8e6c9; margin-top:20px; font-size:14px;}
+footer {
+    text-align:center;
+    padding:20px;
+    background:#e6e6e6;
+    font-size:14px;
+}
 
-/* Scroll suave */
-html {scroll-behavior:smooth;}
+/* Indicadores laterais */
+.indicadores {
+    position:fixed;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    z-index:2000;
+}
+.indicador {
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#c8e6c9;
+    border:2px solid var(--verde-escuro);
+    cursor:pointer;
+    transition:background 0.3s, transform 0.3s;
+}
+.indicador:hover {transform:scale(1.2);}
+.indicador.ativo {
+    background:var(--verde-medio);
+}
 
 /* Responsividade */
-@media(max-width:600px){
+@media(max-width:700px){
     nav {flex-direction:column;}
-    .section-banner {height:200px;}
-    section h2 {font-size:1.5rem;}
+    .container {flex-direction:column;}
+    section {padding:130px 20px;}
+    .indicadores {right:10px;}
 }
 </style>
 </head>
@@ -118,178 +180,140 @@ html {scroll-behavior:smooth;}
 <header>
     <h1>Julho Verde o Ano Inteiro</h1>
     <nav>
-        <a href="#home">Home</a>
-        <a href="#profissionais">Profissionais</a>
-        <a href="#populacao">População</a>
-        <a href="#hpv">HPV & Prevenção</a>
-        <a href="#sobre">Sobre</a>
+        <a href="#home" onclick="moverPara(0)">Home</a>
+        <a href="#profissionais" onclick="moverPara(1)">Profissionais</a>
+        <a href="#populacao" onclick="moverPara(2)">População</a>
+        <a href="#hpv" onclick="moverPara(3)">HPV & Prevenção</a>
+        <a href="#sobre" onclick="moverPara(4)">Sobre</a>
     </nav>
 </header>
 
-<main>
+<div class="main-container" id="main-container">
 
-<!-- Home -->
-<section id="home">
-    <div class="section-banner" style="background-image:url('https://source.unsplash.com/1200x250/?medical,health');"></div>
-    <h2>Previna e Detecte de maneira Precoce</h2>
-    <p>Informações sobre tumores de cabeça e pescoço para profissionais da saúde e população em geral.</p>
-    <a href="#populacao" class="button cta">Saiba Mais</a>
-</section>
+    <!-- Home -->
+    <section id="home" class="ativo">
+        <h2>Bem-vindo ao Julho Verde o Ano Inteiro</h2>
+        <div class="placeholder">Espaço para banner principal</div>
+        <p>O câncer de cabeça e pescoço é um grupo de tumores que acomete boca, faringe, laringe, cavidade nasal e glândulas salivares. Quando identificado precocemente, apresenta altas chances de cura. Este site reúne informações para profissionais de saúde e população em geral, promovendo prevenção e detecção precoce durante todo o ano.</p>
+    </section>
 
-<!-- Profissionais -->
-<section id="profissionais">
-    <div class="section-banner" style="background-image:url('https://source.unsplash.com/1200x250/?doctor,clinic');"></div>
-    <h2> Profissionais de Saúde: O Diagnóstico Começa em Você</h2>
-    <p>Material para agentes comunitários de saúde.</p>
-    <div class="container">
-        <div class="card">
-            <div class="icon">
-                <!-- Ícone alerta -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
-                  <path d="M8.982 1.566a1 1 0 0 0-1.964 0L.165 13.233c-.457.778.091 1.767.982 1.767h13.706c.89 0 1.439-.99.982-1.767L8.982 1.566zm-.982.934 6.857 10.667H1.143L8 2.5zm.002 7.33a.5.5 0 1 1-1 0v-2a.5.5 0 0 1 1 0v2zm0 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
-                </svg>
+    <!-- Profissionais -->
+    <section id="profissionais">
+        <h2>Profissionais de Saúde</h2>
+        <p>Material para médicos, enfermeiros, dentistas e agentes comunitários de saúde, auxiliando na identificação precoce de tumores de cabeça e pescoço.</p>
+        <div class="container">
+            <div class="card">
+                <div class="icon">🩺</div>
+                <h3>Sinais de alerta</h3>
+                <ul>
+                    <li>Ferida na boca que não cicatriza</li>
+                    <li>Dificuldade ou dor para engolir</li>
+                    <li>Rouquidão persistente</li>
+                    <li>Nódulo no pescoço</li>
+                    <li>Dor de ouvido sem causa aparente</li>
+                </ul>
             </div>
-            <h3>Sinais de alerta</h3>
-            <ul>
-                <li>Ferida na boca que não cicatriza</li>
-                <li>Dificuldade ou dor para engolir</li>
-                <li>Rouquidão persistente</li>
-                <li>Nódulo no pescoço</li>
-                <li>Dor de ouvido sem causa aparente</li>
-            </ul>
-        </div>
-        <div class="card">
-            <div class="icon">
-                <!-- Ícone conduta -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
-                  <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm1 12H7v-2h2zm0-4H7V4h2z"/>
-                </svg>
+            <div class="card">
+                <div class="icon">📋</div>
+                <h3>Conduta profissional</h3>
+                <ul>
+                    <li>Investigar histórico de tabagismo e consumo de álcool</li>
+                    <li>Registrar achados suspeitos em ficha clínica</li>
+                    <li>Encaminhar pacientes para avaliação especializada</li>
+                    <li>Orientar medidas preventivas</li>
+                </ul>
             </div>
-            <h3>Conduta profissional</h3>
-            <ul>
-                <li>Investigar histórico de tabagismo e consumo de álcool</li>
-                <li>Registrar achados suspeitos em ficha clínica</li>
-                <li>Encaminhar pacientes para avaliação especializada</li>
-                <li>Orientar medidas preventivas</li>
-            </ul>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- População -->
-<section id="populacao">
-    <div class="section-banner" style="background-image:url('https://source.unsplash.com/1200x250/?family,health');"></div>
-    <h2>População</h2>
-    <p>Incentivando prevenção e busca precoce de atendimento médico.</p>
-    <div class="container">
-        <div class="card">
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
-                  <path d="M8.982 1.566a1 1 0 0 0-1.964 0L.165 13.233c-.457.778.091 1.767.982 1.767h13.706c.89 0 1.439-.99.982-1.767L8.982 1.566zM8 5a.5.5 0 0 1 .5.5v2.5a.5.5 0 0 1-1 0V5.5A.5.5 0 0 1 8 5zm0 6a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/>
-                </svg>
+    <!-- População -->
+    <section id="populacao">
+        <h2>População</h2>
+        <div class="placeholder">Espaço para imagem ilustrativa</div>
+        <p>Incentivando prevenção e busca precoce de atendimento médico.</p>
+        <div class="container">
+            <div class="card">
+                <div class="icon">👩‍⚕️</div>
+                <h3>Fique atento</h3>
+                <ul>
+                    <li>Ferida na boca que não cicatriza</li>
+                    <li>Dificuldade ou dor para engolir</li>
+                    <li>Rouquidão que não passa</li>
+                    <li>Caroço no pescoço</li>
+                    <li>Mau hálito constante</li>
+                </ul>
             </div>
-            <h3>Fique atento</h3>
-            <ul>
-                <li>Ferida na boca que não cicatriza</li>
-                <li>Dificuldade ou dor para engolir</li>
-                <li>Rouquidão que não passa</li>
-                <li>Caroço no pescoço</li>
-                <li>Mau hálito constante</li>
-            </ul>
-            <a href="#hpv" class="button cta">Vacine-se</a>
-        </div>
-        <div class="card">
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
-                  <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm3.646 5.646a.5.5 0 1 1 .708.708L7.707 10.5l-2.147-2.146a.5.5 0 0 1 .708-.708L7.707 9.293l4.939-4.147z"/>
-                </svg>
+            <div class="card">
+                <div class="icon">🌿</div>
+                <h3>Como se prevenir</h3>
+                <ul>
+                    <li>Evitar fumo e álcool</li>
+                    <li>Manter boa higiene bucal</li>
+                    <li>Alimentação rica em frutas e verduras</li>
+                    <li>Vacinação contra HPV</li>
+                    <li>Uso de preservativos nas relações sexuais</li>
+                </ul>
             </div>
-            <h3>Como se prevenir</h3>
-            <ul>
-                <li>Evitar fumo e álcool</li>
-                <li>Manter boa higiene bucal</li>
-                <li>Alimentação rica em frutas e verduras</li>
-                <li>Vacinação contra HPV</li>
-                <li>Uso de preservativos nas relações sexuais</li>
-            </ul>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- HPV -->
-<section id="hpv">
-    <div class="section-banner" style="background-image:url('https://source.unsplash.com/1200x250/?vaccine,health');"></div>
-    <h2>HPV & Prevenção</h2>
-    <div class="container">
-        <div class="card">
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
-                  <path d="M8 0a2 2 0 0 0-2 2v2h4V2a2 2 0 0 0-2-2zm6 6v1h-1V6h1zm-12 0v1H1V6h1zm1 1h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                </svg>
+    <!-- HPV -->
+    <section id="hpv">
+        <h2>HPV & Prevenção</h2>
+        <div class="placeholder">Espaço para imagem HPV</div>
+        <div class="container">
+            <div class="card">
+                <div class="icon">💉</div>
+                <h3>Vacina HPV</h3>
+                <p>Disponível gratuitamente no SUS. Recomendada para adolescentes antes do início da vida sexual.</p>
             </div>
-            <h3>Vacina HPV</h3>
-            <p>Disponível gratuitamente no SUS. Recomendada para adolescentes antes do início da vida sexual.</p>
-        </div>
-        <div class="card">
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#2e7d32" viewBox="0 0 16 16">
-                  <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm3.646 5.646a.5.5 0 1 1 .708.708L7.707 10.5l-2.147-2.146a.5.5 0 0 1 .708-.708L7.707 9.293l4.939-4.147z"/>
-                </svg>
+            <div class="card">
+                <div class="icon">🦠</div>
+                <h3>Medidas preventivas</h3>
+                <ul>
+                    <li>Evitar tabaco e álcool</li>
+                    <li>Higiene oral adequada</li>
+                    <li>Consulta médica ao menor sinal de alerta</li>
+                </ul>
             </div>
-            <h3>Medidas preventivas</h3>
-            <ul>
-                <li>Evitar tabaco e álcool</li>
-                <li>Higiene oral adequada</li>
-                <li>Consulta médica ao menor sinal de alerta</li>
-            </ul>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Sobre -->
-<section id="sobre">
-    <div class="section-banner" style="background-image:url('https://source.unsplash.com/1200x250/?medical,education');"></div>
-    <h2>Sobre</h2>
-    <p>Produzido por <strong>Denise Pereira – Curso de Medicina, FAMEAC</strong> como material educativo sobre câncer de cabeça e pescoço, com foco em prevenção e detecção precoce ao longo do ano.</p>
-</section>
+    <!-- Sobre -->
+    <section id="sobre">
+        <h2>Sobre</h2>
+        <p>Produzido por <strong>Denise Pereira – Curso de Medicina, FAMEAC</strong> como material educativo sobre câncer de cabeça e pescoço, com foco em prevenção e detecção precoce ao longo do ano.</p>
+        <footer>
+            <p>Faculdade de Medicina de Açailândia – FAMEAC | Produzido por Denise Pereira – Curso de Medicina</p>
+        </footer>
+    </section>
 
-</main>
+</div>
 
-<footer>
-    <p>Faculdade de Medicina de Açailândia – FAMEAC | Produzido por Denise Pereira – Curso de Medicina</p>
-</footer>
+<!-- Indicadores laterais -->
+<div class="indicadores" id="indicadores">
+    <div class="indicador ativo" onclick="moverPara(0)"></div>
+    <div class="indicador" onclick="moverPara(1)"></div>
+    <div class="indicador" onclick="moverPara(2)"></div>
+    <div class="indicador" onclick="moverPara(3)"></div>
+    <div class="indicador" onclick="moverPara(4)"></div>
+</div>
 
 <script>
-// Animação de scroll
-function revealOnScroll() {
-    const elements = document.querySelectorAll('.card, section');
-    const windowHeight = window.innerHeight;
-    elements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        if(elementTop < windowHeight - 100) el.classList.add('visible');
-    });
-}
+const container = document.getElementById('main-container');
+const secoes = document.querySelectorAll('section');
+const indicadores = document.querySelectorAll('.indicador');
 
-// Scrollspy
-function scrollSpy() {
-    const sections = document.querySelectorAll('main section');
-    const navLinks = document.querySelectorAll('nav a');
-    const scrollPos = window.scrollY + 120;
-    sections.forEach(section => {
-        if(scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('href') === `#${section.id}`) link.classList.add('active');
-            });
-        }
-    });
+function moverPara(indice) {
+    const largura = window.innerWidth;
+    container.style.transform = `translateX(-${indice * largura}px)`;
+    secoes.forEach((sec, i) => sec.classList.toggle('ativo', i === indice));
+    indicadores.forEach((dot, i) => dot.classList.toggle('ativo', i === indice));
 }
-
-window.addEventListener('scroll', () => { revealOnScroll(); scrollSpy(); });
-window.addEventListener('load', () => { revealOnScroll(); scrollSpy(); });
 </script>
 
 </body>
 </html>
+
 
 
