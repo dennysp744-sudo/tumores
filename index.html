@@ -5,313 +5,281 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julho Verde o Ano Inteiro</title>
 <style>
-/* Reset e tipografia */
-* {margin:0; padding:0; box-sizing:border-box;}
+/* ======= ESTILO GERAL ======= */
 body {
-    font-family: Arial, sans-serif;
-    line-height:1.6;
-    background-color:#ffffff;
-    color:#333;
-    overflow-x:hidden;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #e8f5e9;
+    overflow: hidden;
 }
 
-/* Cores principais */
-:root {
-    --verde-escuro: #1b5e20;
-    --verde-medio: #2e7d32;
-    --verde-claro: #a5d6a7;
-}
-
-/* Menu fixo */
+/* ======= CABEÇALHO ======= */
 header {
-    position:fixed;
-    top:0;
-    width:100%;
-    background:var(--verde-escuro);
-    color:white;
-    z-index:1000;
+    background-color: #2e7d32;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    z-index: 10;
 }
 header h1 {
-    padding:15px;
-    text-align:center;
+    font-size: 2em;
+    margin: 0;
 }
 nav {
-    display:flex;
-    justify-content:center;
-    background:var(--verde-medio);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
 }
 nav a {
-    display:inline-block;
-    color:white;
-    text-decoration:none;
-    padding:15px 20px;
-    font-weight:bold;
-    transition:0.3s;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.3s;
 }
-nav a:hover {
-    background:var(--verde-claro);
-    color:var(--verde-escuro);
+nav a:hover, nav a.active {
+    opacity: 0.7;
 }
 
-/* Container geral horizontal */
-.main-container {
-    display:flex;
-    flex-direction:row;
-    width:500vw; /* 5 seções principais */
-    transition: transform 1s ease;
+/* ======= CONTAINER PRINCIPAL ======= */
+main {
+    display: flex;
+    width: 400%;
+    transition: transform 0.7s ease-in-out;
+    height: calc(100vh - 120px);
 }
 
-/* Cada seção ocupa 100% da tela */
+/* ======= SEÇÕES ======= */
 section {
-    width:100vw;
-    height:100vh;
-    padding:120px 40px 40px 40px;
-    flex-shrink:0;
-    overflow-y:auto;
-    opacity:0;
-    transform:translateY(30px);
-    transition:opacity 1s ease, transform 1s ease;
+    width: 100vw;
+    height: 100%;
+    overflow-y: auto;
+    padding: 40px;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
-section.ativo {
-    opacity:1;
-    transform:translateY(0);
-}
-section h2 {
-    color:var(--verde-escuro);
-    margin-bottom:20px;
-    text-align:center;
-}
-section p {margin-bottom:20px;}
+#inicio { background: #e8f5e9; }
+#populacao { background: #f1f8e9; }
+#profissionais { background: #e0f2f1; }
+#sobre { background: #f9fbe7; }
 
-/* Cards */
-.container {
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    justify-content:center;
+/* ======= CONTEÚDO ======= */
+section h2 {
+    color: #2e7d32;
+    border-left: 5px solid #388e3c;
+    padding-left: 10px;
+    font-size: 1.6em;
+}
+section p {
+    line-height: 1.6;
+    font-size: 1.05em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* ======= CARDS ======= */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
 }
 .card {
-    flex:1 1 300px;
-    background:#f9f9f9;
-    padding:20px;
-    border-radius:8px;
-    box-shadow:2px 2px 10px rgba(0,0,0,0.1);
-    text-align:left;
-    transition:transform 0.3s;
+    flex: 1 1 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card:hover {transform:translateY(-5px);}
-.card h3 {color:var(--verde-medio); margin-bottom:10px;}
-.card ul {margin-left:20px;}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
 
-/* Ícones animados */
+/* ======= ÍCONES ======= */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
 .icon {
-    font-size:40px;
-    text-align:center;
-    margin-bottom:15px;
-    color:var(--verde-medio);
-    animation:pulse 2s infinite;
-    transition:transform 0.3s ease;
-}
-.card:hover .icon {transform:scale(1.3);}
-
-/* Placeholder para imagens */
-.placeholder {
-    width:100%;
-    height:200px;
-    background:var(--verde-claro);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#1b5e20;
-    font-size:18px;
-    border-radius:8px;
-    margin-bottom:20px;
+    font-size: 40px;
+    text-align: center;
+    color: #2e7d32;
+    animation: pulse 2s infinite;
+    margin-bottom: 15px;
 }
 
-/* Footer */
+/* ======= RODAPÉ ======= */
 footer {
-    text-align:center;
-    padding:20px;
-    background:#e6e6e6;
-    font-size:14px;
+    background-color: #1b5e20;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
 }
 
-/* Indicadores laterais */
-.indicadores {
-    position:fixed;
-    right:20px;
-    top:50%;
-    transform:translateY(-50%);
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    z-index:2000;
+/* ======= SETAS DE NAVEGAÇÃO ======= */
+.seta {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5em;
+    background-color: rgba(46, 125, 50, 0.8);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    z-index: 20;
 }
-.indicador {
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    background:#c8e6c9;
-    border:2px solid var(--verde-escuro);
-    cursor:pointer;
-    transition:background 0.3s, transform 0.3s;
+.seta:hover {
+    background-color: #1b5e20;
+    transform: translateY(-50%) scale(1.1);
 }
-.indicador:hover {transform:scale(1.2);}
-.indicador.ativo {
-    background:var(--verde-medio);
-}
-
-/* Responsividade */
-@media(max-width:700px){
-    nav {flex-direction:column;}
-    .container {flex-direction:column;}
-    section {padding:130px 20px;}
-    .indicadores {right:10px;}
-}
+#seta-esquerda { left: 20px; }
+#seta-direita { right: 20px; }
 </style>
 </head>
-<body>
 
+<body>
 <header>
     <h1>Julho Verde o Ano Inteiro</h1>
     <nav>
-        <a href="#home" onclick="moverPara(0)">Home</a>
-        <a href="#profissionais" onclick="moverPara(1)">Profissionais</a>
-        <a href="#populacao" onclick="moverPara(2)">População</a>
-        <a href="#hpv" onclick="moverPara(3)">HPV & Prevenção</a>
-        <a href="#sobre" onclick="moverPara(4)">Sobre</a>
+        <a href="#" class="active" onclick="mudarSecao(0)">Início</a>
+        <a href="#" onclick="mudarSecao(1)">População</a>
+        <a href="#" onclick="mudarSecao(2)">Profissionais</a>
+        <a href="#" onclick="mudarSecao(3)">Sobre</a>
     </nav>
 </header>
 
-<div class="main-container" id="main-container">
+<!-- Setas laterais -->
+<button id="seta-esquerda" class="seta" onclick="navegar(-1)">‹</button>
+<button id="seta-direita" class="seta" onclick="navegar(1)">›</button>
 
-    <!-- Home -->
-    <section id="home" class="ativo">
-        <h2>Bem-vindo ao Julho Verde o Ano Inteiro</h2>
-        <div class="placeholder">Espaço para banner principal</div>
-        <p>O câncer de cabeça e pescoço é um grupo de tumores que acomete boca, faringe, laringe, cavidade nasal e glândulas salivares. Quando identificado precocemente, apresenta altas chances de cura. Este site reúne informações para profissionais de saúde e população em geral, promovendo prevenção e detecção precoce durante todo o ano.</p>
+<main id="container">
+    <section id="inicio">
+        <h2>Bem-vindo</h2>
+        <p>O <strong>Julho Verde o Ano Inteiro</strong> é uma campanha educativa sobre câncer de cabeça e pescoço, promovendo conscientização durante todo o ano.</p>
+        <p>Explore as seções para saber mais sobre prevenção, sinais de alerta e ações voltadas à população e aos profissionais de saúde.</p>
     </section>
 
-    <!-- Profissionais -->
-    <section id="profissionais">
-        <h2>Profissionais de Saúde</h2>
-        <p>Material para médicos, enfermeiros, dentistas e agentes comunitários de saúde, auxiliando na identificação precoce de tumores de cabeça e pescoço.</p>
-        <div class="container">
+    <section id="populacao">
+        <h2>Informações para a População</h2>
+        <p>O diagnóstico precoce é a chave para aumentar as chances de cura. Fique atento aos sintomas e procure atendimento médico se perceber alterações persistentes.</p>
+        <div class="cards">
             <div class="card">
                 <div class="icon">🩺</div>
-                <h3>Sinais de alerta</h3>
-                <ul>
-                    <li>Ferida na boca que não cicatriza</li>
-                    <li>Dificuldade ou dor para engolir</li>
-                    <li>Rouquidão persistente</li>
-                    <li>Nódulo no pescoço</li>
-                    <li>Dor de ouvido sem causa aparente</li>
-                </ul>
+                <h3>Sintomas de Alerta</h3>
+                <p>Feridas na boca que não cicatrizam, dor ao engolir, rouquidão persistente, nódulos no pescoço e alterações na voz devem ser avaliadas.</p>
             </div>
             <div class="card">
-                <div class="icon">📋</div>
-                <h3>Conduta profissional</h3>
-                <ul>
-                    <li>Investigar histórico de tabagismo e consumo de álcool</li>
-                    <li>Registrar achados suspeitos em ficha clínica</li>
-                    <li>Encaminhar pacientes para avaliação especializada</li>
-                    <li>Orientar medidas preventivas</li>
-                </ul>
+                <div class="icon">🚭</div>
+                <h3>Fatores de Risco</h3>
+                <p>O tabagismo e o consumo de álcool são os principais fatores. A infecção pelo HPV também aumenta o risco.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🦷</div>
+                <h3>Prevenção</h3>
+                <p>Evite fumo e álcool, mantenha boa higiene oral, use preservativo e vacine-se contra o HPV.</p>
             </div>
         </div>
     </section>
 
-    <!-- População -->
-    <section id="populacao">
-        <h2>População</h2>
-        <div class="placeholder">Espaço para imagem ilustrativa</div>
-        <p>Incentivando prevenção e busca precoce de atendimento médico.</p>
-        <div class="container">
+    <section id="profissionais">
+        <h2>Recursos para Profissionais de Saúde</h2>
+        <p>O diagnóstico precoce depende do olhar clínico atento. Profissionais devem estar capacitados para identificar sinais precoces e encaminhar adequadamente.</p>
+        <div class="cards">
             <div class="card">
-                <div class="icon">👩‍⚕️</div>
-                <h3>Fique atento</h3>
-                <ul>
-                    <li>Ferida na boca que não cicatriza</li>
-                    <li>Dificuldade ou dor para engolir</li>
-                    <li>Rouquidão que não passa</li>
-                    <li>Caroço no pescoço</li>
-                    <li>Mau hálito constante</li>
-                </ul>
+                <div class="icon">🔬</div>
+                <h3>Detecção Precoce</h3>
+                <p>Realizar exame físico detalhado da cavidade oral, orofaringe e pescoço em consultas de rotina é fundamental.</p>
             </div>
             <div class="card">
-                <div class="icon">🌿</div>
-                <h3>Como se prevenir</h3>
-                <ul>
-                    <li>Evitar fumo e álcool</li>
-                    <li>Manter boa higiene bucal</li>
-                    <li>Alimentação rica em frutas e verduras</li>
-                    <li>Vacinação contra HPV</li>
-                    <li>Uso de preservativos nas relações sexuais</li>
-                </ul>
+                <div class="icon">📚</div>
+                <h3>Educação Continuada</h3>
+                <p>Promover capacitações e campanhas permanentes entre equipes de atenção básica e especialistas.</p>
+            </div>
+            <div class="card">
+                <div class="icon">👥</div>
+                <h3>Acolhimento Integral</h3>
+                <p>O cuidado deve abranger prevenção, diagnóstico, tratamento e reabilitação, com abordagem multiprofissional.</p>
             </div>
         </div>
     </section>
 
-    <!-- HPV -->
-    <section id="hpv">
-        <h2>HPV & Prevenção</h2>
-        <div class="placeholder">Espaço para imagem HPV</div>
-        <div class="container">
-            <div class="card">
-                <div class="icon">💉</div>
-                <h3>Vacina HPV</h3>
-                <p>Disponível gratuitamente no SUS. Recomendada para adolescentes antes do início da vida sexual.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🦠</div>
-                <h3>Medidas preventivas</h3>
-                <ul>
-                    <li>Evitar tabaco e álcool</li>
-                    <li>Higiene oral adequada</li>
-                    <li>Consulta médica ao menor sinal de alerta</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre -->
     <section id="sobre">
-        <h2>Sobre</h2>
-        <p>Produzido por <strong>Denise Pereira – Curso de Medicina, FAMEAC</strong> como material educativo sobre câncer de cabeça e pescoço, com foco em prevenção e detecção precoce ao longo do ano.</p>
-        <footer>
-            <p>Faculdade de Medicina de Açailândia – FAMEAC | Produzido por Denise Pereira – Curso de Medicina</p>
-        </footer>
+        <h2>Sobre o Projeto</h2>
+        <p>Este site foi desenvolvido por <strong>Denise Pereira – Curso de Medicina, FAMEAC</strong> como parte de uma iniciativa educativa sobre o câncer de cabeça e pescoço.</p>
+        <p>O objetivo é manter o tema vivo além do mês de julho, promovendo conhecimento e conscientização de forma acessível à comunidade.</p>
     </section>
+</main>
 
+<footer>
+    <footer style="background-color: #0a3d2e; color: #fff; padding: 20px 0; font-family: Arial, sans-serif; border-top: 4px solid #1dbf73;">
+  <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 0 20px;">
+
+    <!-- Logomarca Institucional -->
+   <div style="width: 120px; height: 60px; display: flex; align-items: center; justify-content: center;">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDbaQIqpbSWxAKxBhDg1vibC4tvuruCruM1g&s"
+       alt="Logomarca FAMEAC"
+       style="max-height: 60px; width: auto; border-radius: 8px;">
 </div>
 
-<!-- Indicadores laterais -->
-<div class="indicadores" id="indicadores">
-    <div class="indicador ativo" onclick="moverPara(0)"></div>
-    <div class="indicador" onclick="moverPara(1)"></div>
-    <div class="indicador" onclick="moverPara(2)"></div>
-    <div class="indicador" onclick="moverPara(3)"></div>
-    <div class="indicador" onclick="moverPara(4)"></div>
-</div>
+    </div>
+
+    <!-- Créditos / Autoria -->
+    <div style="flex: 2; min-width: 280px; text-align: center; margin-top: 10px;">
+      <p style="margin: 5px 0; font-size: 14px;">
+        <strong>Realização:</strong> FAMEAC – Faculdade de Medicina de Açailândia
+      </p>
+      <p style="margin: 5px 0; font-size: 14px;">
+        <strong>Projeto:</strong> Site feito para a  disciplina de Proliferação Celular<br>
+        <strong>Grupo:</strong> [Alunos: Denise Pereira, Paulo Roberto, Amanda Karolinne, Gustavo Mesquita]
+      </p>
+      <p style="margin: 5px 0; font-size: 14px;">
+        <strong>Desenvolvimento Web:</strong> Denise Pereira – Estudante de Medicina (FAMEAC)
+      </p>
+    </div>
+
+    <!-- Links Secundários -->
+    <div style="flex: 1; min-width: 200px; text-align: right;">
+      <a href="#" style="color: #b0f2c2; text-decoration: none; display: block; margin-bottom: 5px;">Políticas de Uso</a>
+      <a href="#" style="color: #b0f2c2; text-decoration: none; display: block; margin-bottom: 5px;">Contato</a>
+      <a href="#" style="color: #b0f2c2; text-decoration: none; display: block;">Acessibilidade</a>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #b0f2c2;">
+    © 2025 FAMEAC. Todos os direitos reservados.
+  </div>
+</footer>
+
+</footer>
 
 <script>
-const container = document.getElementById('main-container');
-const secoes = document.querySelectorAll('section');
-const indicadores = document.querySelectorAll('.indicador');
+let indiceAtual = 0;
+const totalSecoes = 4;
 
-function moverPara(indice) {
-    const largura = window.innerWidth;
-    container.style.transform = `translateX(-${indice * largura}px)`;
-    secoes.forEach((sec, i) => sec.classList.toggle('ativo', i === indice));
-    indicadores.forEach((dot, i) => dot.classList.toggle('ativo', i === indice));
+function mudarSecao(indice) {
+    const main = document.getElementById('container');
+    const links = document.querySelectorAll('nav a');
+    main.style.transform = `translateX(-${indice * 100}vw)`;
+    links.forEach((link, i) => link.classList.toggle('active', i === indice));
+    indiceAtual = indice;
+}
+
+function navegar(direcao) {
+    indiceAtual += direcao;
+    if (indiceAtual < 0) indiceAtual = 0;
+    if (indiceAtual >= totalSecoes) indiceAtual = totalSecoes - 1;
+    mudarSecao(indiceAtual);
 }
 </script>
-
 </body>
 </html>
 
