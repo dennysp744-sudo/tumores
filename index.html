@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julho Verde o Ano Inteiro</title>
 <style>
+
 /* ======= ESTILO GERAL ======= */
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #e8f5e9;
-    overflow: hidden;
+    overflow-x: hidden; /* apenas horizontal escondida */
     scroll-behavior: smooth;
 }
 
@@ -29,8 +30,11 @@ header {
     color: #fff;
     padding: 20px 0;
     text-align: center;
-    position: relative;
-    z-index: 10;
+    position: fixed; /* cabeçalho fixo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
 }
 header img {
     max-width: 120px;
@@ -62,7 +66,8 @@ main {
     display: flex;
     width: 400%;
     transition: transform 0.4s ease;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 120px); /* altura ajustada ao header */
+    margin-top: 120px; /* espaço para o header fixo */
 }
 
 /* ======= SEÇÕES ======= */
@@ -191,6 +196,7 @@ footer a {
     text-decoration: underline;
     margin-bottom: 5px;
 }
+
 </style>
 </head>
 
