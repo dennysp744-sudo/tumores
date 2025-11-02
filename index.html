@@ -5,12 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julho Verde o Ano Inteiro</title>
 <style>
+/* ======= VARIÁVEIS ======= */
+:root {
+    --cor-principal: #2e7d32;
+    --cor-secundaria: #388e3c;
+    --cor-fundo: #e8f5e9;
+}
+
 /* ======= ESTILO GERAL ======= */
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #e8f5e9;
-    overflow: hidden;
+    background-color: var(--cor-fundo);
     scroll-behavior: smooth;
 }
 
@@ -25,11 +31,13 @@ body {
 
 /* ======= CABEÇALHO ======= */
 header {
-    background-color: #2e7d32;
+    background-color: var(--cor-principal);
     color: #fff;
     padding: 20px 0;
     text-align: center;
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
     z-index: 10;
 }
 header img {
@@ -63,6 +71,8 @@ main {
     width: 400%;
     transition: transform 0.4s ease;
     height: calc(100vh - 120px);
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
 }
 
 /* ======= SEÇÕES ======= */
@@ -73,16 +83,17 @@ section {
     padding: 40px;
     box-sizing: border-box;
     flex-shrink: 0;
+    scroll-snap-align: start;
 }
-#inicio { background: #e8f5e9; }
+#inicio { background: var(--cor-fundo); }
 #populacao { background: #f1f8e9; }
 #profissionais { background: #e0f2f1; }
 #sobre { background: #f9fbe7; }
 
 /* ======= CONTEÚDO ======= */
 section h2 {
-    color: #2e7d32;
-    border-left: 5px solid #388e3c;
+    color: var(--cor-principal);
+    border-left: 5px solid var(--cor-secundaria);
     padding-left: 10px;
     font-size: 1.6em;
     animation: fadeIn 1s ease both;
@@ -116,6 +127,7 @@ section h3 {
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 /* ======= IMAGENS ======= */
@@ -144,10 +156,6 @@ footer {
     font-family: Arial, sans-serif;
     border-top: 4px solid #1dbf73;
     text-align: center;
-}
-footer a {
-    color: #b0f2c2;
-    text-decoration: none;
 }
 
 /* ======= SETAS ======= */
@@ -186,6 +194,27 @@ footer a {
     text-decoration: underline;
     margin-bottom: 5px;
 }
+
+/* ======= BOTÃO ======= */
+.btn-saiba-mais {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--cor-principal);
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+.btn-saiba-mais:hover { background-color: #1b5e20; }
+
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 768px) {
+    section h2 { font-size: 1.4em; }
+    section h3 { font-size: 1.1em; }
+    .cards { flex-direction: column; }
+    .imagens-sinais img { max-width: 100%; }
+}
 </style>
 </head>
 
@@ -194,16 +223,16 @@ footer a {
     <img src="img/logo-fameac.jpeg" alt="Logo FAMEAC" class="fade-in">
     <h1 class="fade-in">Julho Verde o Ano Inteiro</h1>
     <nav>
-        <a href="#" class="active" onclick="mudarSecao(0)">Início</a>
-        <a href="#" onclick="mudarSecao(1)">População</a>
-        <a href="#" onclick="mudarSecao(2)">Profissionais</a>
-        <a href="#" onclick="mudarSecao(3)">Sobre</a>
+        <a href="#" class="active">Início</a>
+        <a href="#">População</a>
+        <a href="#">Profissionais</a>
+        <a href="#">Sobre</a>
     </nav>
 </header>
 
 <!-- Setas -->
-<button id="seta-esquerda" class="seta" onclick="navegar(-1)">‹</button>
-<button id="seta-direita" class="seta" onclick="navegar(1)">›</button>
+<button id="seta-esquerda" class="seta" aria-label="Seção anterior">‹</button>
+<button id="seta-direita" class="seta" aria-label="Próxima seção">›</button>
 
 <main id="container">
 
