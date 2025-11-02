@@ -11,6 +11,16 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #e8f5e9;
     overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ======= ANIMAÇÕES ======= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+    animation: fadeIn 1s ease both;
 }
 
 /* ======= CABEÇALHO ======= */
@@ -21,6 +31,11 @@ header {
     text-align: center;
     position: relative;
     z-index: 10;
+}
+header img {
+    max-width: 120px;
+    display: block;
+    margin: 0 auto 10px auto;
 }
 header h1 {
     font-size: 2em;
@@ -70,16 +85,17 @@ section h2 {
     border-left: 5px solid #388e3c;
     padding-left: 10px;
     font-size: 1.6em;
+    animation: fadeIn 1s ease both;
 }
-section p {
+section p, section li {
     line-height: 1.6;
     font-size: 1.05em;
     color: #333;
-    margin-bottom: 15px;
 }
 section h3 {
     color: #1b5e20;
-    margin-top: 20px;
+    margin-top: 25px;
+    font-size: 1.3em;
 }
 
 /* ======= CARDS ======= */
@@ -102,18 +118,22 @@ section h3 {
     box-shadow: 0 5px 12px rgba(0,0,0,0.2);
 }
 
-/* ======= ÍCONES ======= */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+/* ======= IMAGENS ======= */
+.imagens-sinais {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
 }
-.icon {
-    font-size: 40px;
-    text-align: center;
-    color: #2e7d32;
-    animation: pulse 2s infinite;
-    margin-bottom: 15px;
+.imagens-sinais img {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease both;
 }
 
 /* ======= RODAPÉ ======= */
@@ -130,7 +150,7 @@ footer a {
     text-decoration: none;
 }
 
-/* ======= SETAS DE NAVEGAÇÃO ======= */
+/* ======= SETAS ======= */
 .seta {
     position: fixed;
     top: 50%;
@@ -153,7 +173,7 @@ footer a {
 #seta-esquerda { left: 20px; }
 #seta-direita { right: 20px; }
 
-/* ======= LINKS ACS ======= */
+/* ======= LINKS ======= */
 .links-acs {
     margin-top: 30px;
     padding: 15px;
@@ -166,33 +186,13 @@ footer a {
     text-decoration: underline;
     margin-bottom: 5px;
 }
-
-/* ======= ALERTAS ======= */
-.alerta {
-    font-weight: bold;
-    color: #c62828;
-    margin-top: 20px;
-}
-
-/* ======= IMAGENS DE SINAIS ======= */
-.imagens-sinais {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-}
-.imagens-sinais img {
-    max-width: 150px;
-    height: auto;
-    border: 2px solid #2e7d32;
-    border-radius: 5px;
-    object-fit: cover;
-}
 </style>
 </head>
+
 <body>
 <header>
-    <h1>Julho Verde o Ano Inteiro</h1>
+    <img src="img/logo-fameac.jpeg" alt="Logo FAMEAC" class="fade-in">
+    <h1 class="fade-in">Julho Verde o Ano Inteiro</h1>
     <nav>
         <a href="#" class="active" onclick="mudarSecao(0)">Início</a>
         <a href="#" onclick="mudarSecao(1)">População</a>
@@ -201,146 +201,151 @@ footer a {
     </nav>
 </header>
 
+<!-- Setas -->
 <button id="seta-esquerda" class="seta" onclick="navegar(-1)">‹</button>
 <button id="seta-direita" class="seta" onclick="navegar(1)">›</button>
 
 <main id="container">
+
     <!-- INÍCIO -->
-    <section id="inicio">
+    <section id="inicio" class="fade-in">
         <h2>Bem-vindo</h2>
         <p>O <strong>Julho Verde o Ano Inteiro</strong> é uma campanha educativa sobre câncer de cabeça e pescoço, promovendo conscientização durante todo o ano.</p>
         <p>Explore as seções para saber mais sobre prevenção, sinais de alerta e ações voltadas à população e aos profissionais de saúde.</p>
     </section>
 
     <!-- POPULAÇÃO -->
-    <section id="populacao">
+    <section id="populacao" class="fade-in">
         <h2>O que é o câncer de cabeça e pescoço?</h2>
         <p>Assim como ocorre nos demais tipos de câncer, o câncer de cabeça e pescoço se caracteriza pelo desenvolvimento anormal e acelerado de células, levando à formação de nódulos e tumores que podem comprometer a função do órgão onde se instala.</p>
-        <p>A diferença, neste caso, é que o câncer de cabeça e pescoço engloba esse distúrbio em vários órgãos, todos localizados nas regiões cefálica e cervical. Assim, estão nessa classificação os tumores malignos (câncer) que aparecem na boca, orofaringe, laringe (cordas vocais), nariz, seios nasais, nasofaringe, órbita, pescoço, tireoide, couro cabeludo, pele do rosto e pescoço.</p>
-
-        <div class="cards">
-            <div class="card">
-                <div class="icon">🩺</div>
-                <h3>Sinais de alerta</h3>
-                <p>Procure atendimento médico se notar:</p>
-                <ul>
-                    <li>Feridas na boca ou garganta que não cicatrizam em 15 dias</li>
-                    <li>Manchas vermelhas ou brancas na boca, língua, gengivas ou palato</li>
-                    <li>Nódulos no pescoço</li>
-                    <li>Rouquidão persistente</li>
-                    <li>Dificuldade para mastigar, engolir ou falar</li>
-                    <li>Assimetria facial ou travamento da boca</li>
-                    <li>Dor ou incômodo na boca e garganta</li>
-                    <li>Sangramentos sem causa aparente</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="icon">🚭</div>
-                <h3>Fatores de risco importantes</h3>
-                <ul>
-                    <li>Tabagismo (cigarros, charutos, narguilé, rapé, fumo mascado)</li>
-                    <li>Consumo excessivo de álcool</li>
-                    <li>Infecção pelo HPV tipo 16</li>
-                    <li>Exposição solar intensa (especialmente nos lábios)</li>
-                    <li>Sobrepeso e obesidade</li>
-                    <li>Idade e gênero (mais comum em homens acima de 40 anos)</li>
-                    <li>Imunossupressão</li>
-                    <li>Exposição ocupacional a agentes químicos sem EPI adequado</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="icon">🦷</div>
-                <h3>Prevenção</h3>
-                <ul>
-                    <li>Não fume e evite álcool em excesso</li>
-                    <li>Mantenha alimentação saudável e pratique exercícios</li>
-                    <li>Higiene bucal diária</li>
-                    <li>Proteja pele e mucosas do sol</li>
-                    <li>Faça consultas regulares e procure médico ao notar sinais suspeitos</li>
-                    <li>Vacine-se contra HPV</li>
-                </ul>
-            </div>
-        </div>
+        <p>A diferença, neste caso, é que o câncer de cabeça e pescoço engloba esse distúrbio em vários órgãos, todos localizados nas regiões cefálica e cervical.</p>
     </section>
 
-    <!-- PROFISSIONAIS / ACS -->
-    <section id="profissionais">
-        <h2>Para Profissionais da Saúde</h2>
+    <!-- PROFISSIONAIS -->
+    <section id="profissionais" class="fade-in">
+    <h2>Para profissional da saúde</h2>
+    <p>Pesquisadores do INCA conduziram um estudo inédito, com casos registrados entre 2000 e 2017, no qual verificaram que 78,2% foram identificados em estágios avançados (III ou IV). Fatores de risco como tabagismo e consumo de bebidas alcoólicas, além de baixa escolaridade e dificuldade de acesso a serviços de saúde especializados, contribuem para o quadro.</p>
 
-        <p>Pesquisadores do INCA conduziram um estudo inédito, com casos registrados entre 2000 e 2017, no qual verificaram que 78,2% foram identificados em estágios avançados (III ou IV). Fatores de risco como tabagismo e consumo de bebidas alcoólicas, além de baixa escolaridade e dificuldade de acesso a serviços de saúde especializados, contribuem para o quadro.</p>
+    <h3>MAIORIA É DE HOMENS</h3>
+    <p>De acordo com o levantamento, que analisou mais de 145 mil pacientes por meio dos Registros Hospitalares de Câncer existentes no Brasil, os tumores hipofaríngeos lideram a lista de carcinomas detectados em estágios avançados, com 91,3% dos casos. Em seguida, estão os orofaríngeos (86,6%), da cavidade oral (75,1%) e da laringe (69,5%). Durante o período abrangido pela análise, também foi observada tendência de aumento anual de 0,29% e 0,38% para tumores em fase adiantada da cavidade oral e da orofaringe, respectivamente. Do total de pacientes com a doença avançada, a maioria é do sexo masculino (84,9%), têm menos de 60 anos (54,4%) e baixa escolaridade (40,8%), são consumidores de álcool (58,2%) e tabaco (71,3%) – fatores de risco associados à doença – e portadores de carcinoma primário localizado na hipofaringe (11,3%) ou orofaringe (31,7%).</p>
 
-        <h3>Maioria é de Homens</h3>
-        <p>De acordo com o levantamento, que analisou mais de 145 mil pacientes por meio dos Registros Hospitalares de Câncer existentes no Brasil, os tumores hipofaríngeos lideram a lista de carcinomas detectados em estágios avançados, com 91,3% dos casos. Em seguida, estão os orofaríngeos (86,6%), da cavidade oral (75,1%) e da laringe (69,5%). Durante o período abrangido pela análise, também foi observada tendência de aumento anual de 0,29% e 0,38% para tumores em fase adiantada da cavidade oral e da orofaringe, respectivamente.</p>
-        <p>Do total de pacientes com doença avançada, a maioria é do sexo masculino (84,9%), têm menos de 60 anos (54,4%) e baixa escolaridade (40,8%), são consumidores de álcool (58,2%) e tabaco (71,3%) – fatores de risco associados à doença – e portadores de carcinoma primário localizado na hipofaringe (11,3%) ou orofaringe (31,7%).</p>
+    <h3>DESIGUALDADES</h3>
+    <p>A pesquisa também apontou que os resultados obtidos são fruto de grandes disparidades regionais existentes no País. Todos os estados apresentaram elevados percentuais de doença avançada, com destaque para os das regiões Norte e Nordeste, refletindo desigualdades no acesso a serviços especializados de saúde.</p>
 
-        <h3>Desigualdades</h3>
-        <p>A pesquisa também apontou que os resultados obtidos são fruto de grandes disparidades regionais existentes no País. Todos os estados apresentaram elevados percentuais de doença avançada, com destaque para os das regiões Norte e Nordeste, refletindo desigualdades no acesso a serviços especializados de saúde.</p>
+    <h3>Os 7 tipos de câncer da cabeça e pescoço mais comuns</h3>
+    <p>Como dissemos acima, há vários tipos de câncer de cabeça e pescoço. Juntos, eles já atingem o segundo lugar em incidência no Brasil, de acordo com as estatísticas do Instituto Nacional de Câncer. Os sete mais incidentes, na atualidade, são:</p>
+    
+    <h4>Câncer de Laringe</h4>
+    <p>Esse tipo da doença, incluindo a supraglote, glote e subglote, é mais comum em homens a partir de 40 anos. Cerca de ⅔ das lesões são detectadas inicialmente nas cordas vocais e podem desencadear sintomas como dor de garganta, rouquidão e dificuldade de engolir.</p>
+    
+    <h4>Orofaringe</h4>
+    <p>São tumores que acometem a base da língua, as paredes da faringe, as tonsilas e o palato mole. Esse tipo de câncer de cabeça e pescoço pode ser detectado ainda na nasofaringe, cavidade nasal e seios paranasais, hipofaringe e glândulas salivares. Em geral, os sinais da doença vão desde dor e dificuldade ao engolir até dor de ouvido de repetição.</p>
+    
+    <h4>Câncer de tireoide</h4>
+    <p>Caracterizado pela formação de um nódulo nessa glândula, o câncer de tireoide atinge, de acordo com o INCA, três vezes mais mulheres do que homens. Além disso, está fortemente ligado à obesidade. Os sintomas só costumam aparecer quando a doença já está em estágio avançado. Mas casos suspeitos podem ser identificados pela presença de caroço na região.</p>
+    
+    <h4>Câncer de pele</h4>
+    <p>Nem todas as manifestações do câncer de pele são enquadrados como tipos de câncer de cabeça e pescoço. Ao contrário, ele está relacionado àqueles que surgem em mucosas e tecidos nesta região. Ou seja, são os cânceres na pele da face, pescoço ou couro cabeludo.</p>
+    
+    <h4>Tumores oculares</h4>
+    <p>São os tipos de cânceres que podem afetar desde a órbita ocular, atingir a glândula lacrimal ou o câncer da coróide, que pode prejudicar a retina. Ocorre com mais frequência entre os 55 e 60 anos e em pessoas de pele escura. Os sinais e sintomas tendem a ser tardios e geralmente caracterizam-se pela a perda de visão e por sintomas de descolamento da retina.</p>
+    
+    <h4>Tumores intracranianos</h4>
+    <p>Os tumores intracranianos podem envolver o cérebro e outras estruturas, como a meninge — membrana que recobre o cérebro. Em geral, esse tipo de câncer se desenvolve no início ou na fase média da idade adulta. No entanto, pode ser detectado em qualquer idade e exige atenção redobrada, pois, como a caixa craniana não tem espaço para expansão, mesmo os tumores benignos podem causar disfunção neurológica grave ou morte.</p>
+    
+    <h4>Câncer da cavidade oral</h4>
+    <p>O câncer de boca pode se desenvolver nos lábios, gengivas, bochechas, céu da boca ou na língua. Esse conjunto de doenças atinge atualmente cerca de 15 mil pessoas todos os anos e pode se manifestar por meio de lesões com dificuldade de cicatrização, sangramentos, além de manchas vermelhas ou esbranquiçadas nesta região. Este tipo de câncer estará mais detalhado a seguir. Em um estudo que analisou a mortalidade por câncer de boca na região nordeste do Brasil entre 2012 e 2022 constatou que o Maranhão foi inicialmente identificado como um dos Estados com os maiores coeficientes brutos médios de mortalidade por câncer de boca na Região Nordeste. O valor médio do coeficiente bruto de mortalidade para a região Nordeste como um todo foi de 25,7. No entanto, o município de Zé Doca, no Maranhão, registrou o menor coeficiente bruto de mortalidade da região, com um valor de 1,91. O estudo ainda mostra que o Maranhão apresentou uma tendência crescente na taxa de mortalidade por câncer de boca no período de 2012 a 2022. Quando o ACS compreende o cenário epidemiológico do câncer de boca e das desigualdades regionais, ele se torna uma peça-chave na mudança desse panorama, ajudando a reduzir a mortalidade e melhorar a qualidade de vida da população.</p>
 
-        <h3>Os 7 tipos de câncer da cabeça e pescoço mais comuns</h3>
-        <p>Os sete mais incidentes são: Laringe, Orofaringe, Tireóide, Câncer de Pele, Tumores Oculares, Tumores Intracranianos e Cavidade Oral.</p>
+    <h3>CÂNCER DE BOCA</h3>
 
-        <h3>Câncer de Boca – Prevenção e Fatores de Risco</h3>
-        <ul>
-            <li>Tabagismo e produtos derivados do tabaco</li>
-            <li>Consumo de bebidas alcoólicas</li>
-            <li>Mascar betel</li>
-            <li>Infecção pelo HPV tipo 16</li>
-            <li>Exposição à radiação solar (para o câncer de lábio)</li>
-            <li>Excesso de gordura corporal (sobrepeso e obesidade)</li>
-            <li>Gênero e Idade – homens brancos acima de 40 anos</li>
-            <li>Imunossupressão</li>
-            <li>Uso adequado de EPI em atividades de risco</li>
-        </ul>
+    <h4>Prevenção e Fatores de Risco</h4>
+    <p>Quem fuma cigarro ou utiliza outros produtos derivados do tabaco, como cigarro de palha, de Bali, de cravo ou kreteks, fumo de rolo, tabaco mascado, rapé, charutos, cachimbos e narguilé, dentre outros, tem risco muito maior de desenvolver câncer de boca e de faringe do que não fumantes. Quanto maior o número de cigarros fumados, maior o risco de câncer. Consumo de bebidas alcoólicas. Mascar betel (mistura de semente de areca – um gênero de palmeira –, folhas de Piper betle –um tipo de pimenteira – e, geralmente, tabaco. Há outras variações desta mistura). A semente de areca libera substâncias altamente cancerígenas. Infecção pelo papilomavírus humano (HPV) tipo 16. Exposição à radiação solar (para o câncer de lábio). Excesso de gordura corporal (sobrepeso e obesidade) (Segundo o Fundo Mundial de Pesquisa em Câncer e o Instituto Americano de Pesquisa em Câncer - WCRF/AICR, na sigla na língua inglesa). Gênero e Idade – a doença é mais frequente em homens brancos acima de 40 anos. Imunosupressão. Utilização de equipamentos de proteção individual (EPI) adequados a realização de atividades de trabalho nas quais haja exposição a agentes químicos relacionados ao desenvolvimento deste tipo de câncer. É essencial que os Agentes Comunitários de Saúde (ACS) estejam atentos a esses fatores de risco porque eles estão diretamente ligados à prevenção e ao diagnóstico precoce do câncer de boca e de faringe — doenças que, quando descobertas tardiamente, têm tratamento mais difícil e maiores chances de deixar sequelas.</p>
 
-        <h3>Detecção precoce</h3>
-        <p>Os ACS devem estar atentos aos sinais de alerta para encaminhamento:</p>
-        <ul>
-            <li>Ulcerações persistentes por mais de 15 dias</li>
-            <li>Placas vermelhas ou esbranquiçadas na boca, língua, gengivas ou palato</li>
-            <li>Nódulos no pescoço</li>
-            <li>Rouquidão persistente</li>
-            <li>Dificuldade de mastigação, deglutição ou fala</li>
-            <li>Assimetria facial</li>
-        </ul>
+    <h4>Detecção precoce</h4>
+    <p>Campanhas de prevenção e detecção precoce em grupos de elevado risco para mudar o quadro atual. Controle do tabagismo associado a políticas de redução do consumo de álcool e investimento na capacitação de profissionais da atenção básica são caminhos que ajudariam a reduzir o número de diagnósticos tardios. As chances de cura para o câncer de cabeça e pescoço são de 90% se tratado desde cedo. O diagnóstico precoce e o rastreio fazem parte dessa medida. Atualmente não há recomendação para o rastreamento do câncer de boca e orofaringe como estratégia de detecção precoce, pois as evidências científicas atuais não são suficientes para avaliar os riscos e os benefícios do rastreamento em pessoas assintomáticas (IARC, 2023; USTaskForce, 2023). De acordo com a IARC (2023), o rastreamento em pessoas de alto risco pode reduzir a mortalidade por câncer de boca e orofaringe mas não foi possível estabelecer impacto do rastreamento na população geral, com base nos estudos disponíveis.</p>
+    
+    <h4>Diagnóstico precoce</h4>
+    <p>O diagnóstico precoce do câncer de boca é a estratégia recomendada para a detecção precoce desse câncer. Os ACS são os principais vínculos da comunidade com a Estratégia de Saúde da Família e têm a oportunidade de identificar os seguintes sinais de alarme e encaminhar casos suspeitos para diagnóstico e orientação na unidade de saúde:</p>
+    
+    <ul>
+        <li>Ulcerações persistentes por mais de 15 dias.</li>
+        <li>Placas vermelhas ou esbranquiçadas na língua, nas gengivas, no palato e na mucosa jugal que não decorrem de outra doença ou causa conhecida.</li>
+    </ul>
 
-        <h3>Diagnóstico</h3>
-        <p>O diagnóstico precoce depende do exame clínico e da confirmação por biópsia, podendo incluir exames de imagem como tomografia. O tratamento é cirúrgico na maioria dos casos, podendo ser associado a radioterapia ou quimioterapia quando necessário. A abordagem multiprofissional garante melhor resultado e reabilitação funcional.</p>
+    <p>Na língua</p>
+    <p>Na mucosa jugal</p>
+    <p>Na gengiva</p>
+    <p>No palato duro</p>
 
-        <h3>Acompanhamento pós-tratamento</h3>
-        <p>O ACS complementa o acompanhamento clínico, monitorando domiciliarmente, oferecendo apoio educacional, emocional e social, garantindo adesão ao tratamento e detecção precoce de complicações.</p>
+    <div class="imagens-sinais fade-in">
+        <img src="img/icone-alerta.png" alt="Lesão suspeita na língua">
+        <img src="img/img32.png" alt="Lesão suspeita na mucosa jugal">
+        <img src="img/img43.png" alt="Lesão suspeita na gengiva">
+        <img src="img/img61.png" alt="Lesão suspeita no palato duro">
+    </div>
 
-        <div class="links-acs">
-            <h3>Saiba Mais</h3>
-            <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/c/cancer-de-cabeca-e-pescoco/view" target="_blank">Diretrizes de diagnóstico e tratamento – INCA</a>
+    <ul>
+        <li>Nódulos no pescoço.</li>
+        <li>Rouquidão persistente.</li>
+        <li>Dificuldade de mastigação, deglutição ou fala.</li>
+        <li>Assimetria facial.</li>
+    </ul>
 
-            <h4>Referências Bibliográficas</h4>
-            <ul>
-                <li>INCA. INCA divulga pesquisa inédita sobre o panorama do câncer de cabeça e pescoço no Brasil, 2025. Disponível em: <a href="https://www.gov.br/inca/pt-br/canais-de-atendimento/imprensa/releases/2025/inca-divulga-pesquisa-inedita-sobre-o-panorama-do-cancer-de-cabeca-e-pescoco-no-brasil" target="_blank">link</a>. Acesso em: 01 nov. 2025.</li>
-                <li>SIQUEIRA, Jordania Chaves de. Análise espacial, temporal e espaço-temporal da mortalidade por câncer de boca na região Nordeste do Brasil, 2012-2022. Dissertação (Mestrado em Saúde da Família) - Universidade Federal do Ceará, Sobral, 2025.</li>
-                <li>AMB. 7 tipos de câncer de cabeça e pescoço, 2022. Disponível em: <a href="https://sbco.org.br/7-tipos-de-cancer-de-cabeca-e-pescoco/" target="_blank">link</a>. Acesso em: 01 nov. 2025.</li>
-                <li>BRASIL. Câncer de boca, 2025. Disponível em: <a href="https://www.gov.br/inca/pt-br/assuntos/cancer/tipos/boca" target="_blank">link</a>. Acesso em: 01 nov. 2025.</li>
-                <li>UEL. ATLAS DIGITAL DE IMAGENS CLÍNICAS DE CÂNCER DE BOCA, 2024. Disponível em: <a href="https://sites.uel.br/estomatologia/wp-content/uploads/2025/01/atlas-digital.pdf" target="_blank">link</a>. Acesso em: 01 nov. 2025.</li>
-            </ul>
-        </div>
-    </section>
+    <p>Essas alterações suspeitas na cavidade oral devem ser investigadas e a confirmação diagnóstica realizada por meio de biópsia. Quando o câncer é confirmado, deve-se encaminhar o paciente para tratamento oncológico.</p>
+
+    <h4>Sinais e sintomas</h4>
+    <ul>
+        <li>Dor (dor na boca ou na garganta)</li>
+        <li>Irritação (ardência ou incômodo na boca ou garganta)</li>
+        <li>Nodulação (carocinhos ou inchaços)</li>
+        <li>Manchas (eritroplasia ou leucoplasia) (manchas vermelhas ou esbranquiçadas na boca)</li>
+        <li>Odinofagia (dor ao engolir)</li>
+        <li>Disfagia (dificuldade para engolir)</li>
+        <li>Disartria (dificuldade para falar)</li>
+        <li>Disfonia (rouquidão persistente)</li>
+        <li>Fixação da língua (dificuldade para mexer a língua)</li>
+        <li>Trismo (travamento da boca ou dificuldade para abrir a boca)</li>
+        <li>Otalgia reflexa (dor no ouvido sem causa aparente)</li>
+        <li>Dispneia (falta de ar)</li>
+        <li>Adenomegalia (caroços no pescoço)</li>
+        <li>Sangramento (sangramento na boca ou garganta)</li>
+    </ul>
+
+    <h4>Diagnóstico</h4>
+    <p>O diagnóstico do câncer de cavidade oral normalmente pode ser feito com o exame clínico, mas a confirmação depende da biópsia. Esse procedimento, na grande maioria das vezes, pode ser feito de forma ambulatorial, com anestesia local, por um profissional treinado. A biópsia ambulatorial é realizada com pinças de saca-bocado, e o material é enviado para análise histopatológica. Também podem ser feitas biópsias em cunha ou punções por agulha fina em lesões da cavidade oral ou massas cervicais. Exames de imagem, como a tomografia computadorizada, auxiliam na avaliação da extensão da tumoração. A associação entre exame clínico, biópsia e tomografia permite definir o tratamento mais adequado. Lesões iniciais podem ser avaliadas sem imagem. O diagnóstico precoce favorece tratamentos mais simples e eficazes, reduzindo sequelas e complicações.</p>
+    
+    <h4>Tratamento</h4>
+    <p>O tratamento do câncer de cavidade oral é, na maioria dos casos, cirúrgico, podendo variar conforme o tamanho e a complexidade da lesão. Lesões pequenas geralmente exigem cirurgias simples, enquanto tumores maiores demandam procedimentos mais extensos, que podem causar sequelas funcionais. O cirurgião de cabeça e pescoço é o responsável por avaliar o estágio da doença e definir o tratamento mais adequado, podendo associar radioterapia e quimioterapia quando a cirurgia não é possível ou traria grandes prejuízos à qualidade de vida. A cirurgia pode envolver a retirada da área afetada e dos linfonodos do pescoço, com reconstrução imediata ou posterior, dependendo do caso. Em situações mais simples, basta remover a lesão e realizar o fechamento primário. Já nos casos complexos, a radioterapia complementar pode ser necessária para aumentar as chances de cura. Durante todo o processo, o acompanhamento interdisciplinar é fundamental, com atuação de diferentes profissionais da saúde antes, durante e após o tratamento, buscando prevenir complicações, preservar funções como mastigação, fala e respiração, e garantir melhor reabilitação e qualidade de vida ao paciente.</p>
+
+    <h4>Acompanhamento pós-tratamento</h4>
+    <p>É importante manter o acompanhamento após tratamento com consultas de rotina com equipe multidisciplinar e exames de imagem quando necessários, principalmente nos primeiros 5 anos. O ACS complementa o acompanhamento clínico especializado, proporcionando monitoramento domiciliar, apoio educacional, emocional e social. Sua atuação é fundamental para garantir adesão ao tratamento, detecção precoce de complicações e melhoria da qualidade de vida de pacientes pós-tratamento de câncer de cabeça e pescoço. Essa abordagem integrada com a equipe multiprofissional potencializa os resultados do tratamento e favorece a reintegração social do paciente.</p>
+
+    <h3>Saiba mais</h3>
+    <p>Para mais informações sobre diagnóstico, estadiamento e tratamento de todos os tipos de câncer de cabeça e pescoço:</p>
+    <p><a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/c/cancer-de-cabeca-e-pescoco/view" target="_blank">Acesse aqui</a></p>
+
+    <h3>Referências bibliográficas</h3>
+    <ul>
+        <li>INCA. INCA divulga pesquisa inédita sobre o panorama do câncer de cabeça e pescoço no Brasil, 2025. Disponível em: <a href="https://www.gov.br/inca/pt-br/canais-de-atendimento/imprensa/releases/2025/inca-divulga-pesquisa-inedita-sobre-o-panorama-do-cancer-de-cabeca-e-pescoco-no-brasil" target="_blank">https://www.gov.br/inca/pt-br/canais-de-atendimento/imprensa/releases/2025/inca-divulga-pesquisa-inedita-sobre-o-panorama-do-cancer-de-cabeca-e-pescoco-no-brasil</a> Acesso em: 01 nov. de 2025.</li>
+        <li>SIQUEIRA, Jordania Chaves de. Análise espacial, temporal e espaço-temporal da mortalidade por câncer de boca na região Nordeste do Brasil, 2012-2022. 2025. Dissertação (Mestrado em Saúde da Família) - Programa de Pós-Graduação em Saúde da Família, Universidade Federal do Ceará, Sobral, 2025.</li>
+        <li>AMB. 7 tipos de câncer de cabeça e pescoço, 2022. Disponível em: <a href="https://sbco.org.br/7-tipos-de-cancer-de-cabeca-e-pescoco/" target="_blank">https://sbco.org.br/7-tipos-de-cancer-de-cabeca-e-pescoco/</a> Acesso em: 01 nov. de 2025.</li>
+        <li>BRASIL. Câncer de boca, 2025. Disponível: <a href="https://www.gov.br/inca/pt-br/assuntos/cancer/tipos/boca" target="_blank">https://www.gov.br/inca/pt-br/assuntos/cancer/tipos/boca</a> Acesso em: 01 nov. de 2025.</li>
+        <li>UEL. ATLAS DIGITAL DE IMAGENS CLÍNICAS DE CÂNCER DE BOCA, 2024. Disponível em: <a href="https://sites.uel.br/estomatologia/wp-content/uploads/2025/01/atlas-digital.pdf" target="_blank">https://sites.uel.br/estomatologia/wp-content/uploads/2025/01/atlas-digital.pdf</a> Acesso em: 01 nov. de 2025.</li>
+    </ul>
+
+</section>
 
     <!-- SOBRE -->
-    <section id="sobre">
+    <section id="sobre" class="fade-in">
         <h2>Sobre o Projeto</h2>
-        <p>Este site foi desenvolvido por <strong>Denise Pereira – Curso de Medicina, FAMEAC</strong> como parte de uma iniciativa educativa sobre o câncer de cabeça e pescoço.</p>
-        <p>O objetivo é manter o tema vivo além do mês de julho, promovendo conhecimento e conscientização de forma acessível à comunidade.</p>
-        <h3>Alunos Participantes</h3>
-        <ul>
-            <li>Denise Pereira</li>
-            <li>Paulo Roberto</li>
-            <li>Amanda Karolinne</li>
-            <li>Gustavo Mesquita</li>
-        </ul>
+        <p>Desenvolvido por <strong>Denise Pereira</strong> – Curso de Medicina, FAMEAC, para  a matéria de proliferação celular ministrada pelo professor Gabriel Mota.</p>
+        <p>Alunos participantes: Denise Pereira, Paulo Roberto, Amanda Karolinne e Gustavo Mesquita.</p>
     </section>
+
 </main>
 
 <footer>
-  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
     <p><strong>Realização:</strong> FAMEAC – Faculdade de Medicina de Açailândia</p>
     <p><strong>Desenvolvimento Web:</strong> Denise Pereira – Estudante de Medicina (FAMEAC)</p>
   </div>
@@ -350,7 +355,6 @@ footer a {
 <script>
 let indiceAtual = 0;
 const totalSecoes = 4;
-
 function mudarSecao(indice) {
     const main = document.getElementById('container');
     const links = document.querySelectorAll('nav a');
@@ -358,7 +362,6 @@ function mudarSecao(indice) {
     links.forEach((link, i) => link.classList.toggle('active', i === indice));
     indiceAtual = indice;
 }
-
 function navegar(direcao) {
     indiceAtual += direcao;
     if (indiceAtual < 0) indiceAtual = 0;
@@ -368,6 +371,7 @@ function navegar(direcao) {
 </script>
 </body>
 </html>
+
 
 
 
