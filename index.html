@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julho Verde o Ano Inteiro</title>
 <style>
-
 /* ======= ESTILO GERAL ======= */
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #e8f5e9;
-    overflow-x: hidden; /* apenas horizontal escondida */
     scroll-behavior: smooth;
 }
 
@@ -28,28 +26,29 @@ body {
 header {
     background-color: #2e7d32;
     color: #fff;
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: center;
-    position: fixed; /* cabeçalho fixo */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
 }
 header img {
-    max-width: 120px;
+    max-width: 100px;
     display: block;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 5px auto;
 }
 header h1 {
-    font-size: 2em;
+    font-size: 1.6em;
     margin: 0;
 }
 nav {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 5px;
 }
 nav a {
     color: #fff;
@@ -63,21 +62,13 @@ nav a:hover, nav a.active {
 
 /* ======= CONTAINER PRINCIPAL ======= */
 main {
-    display: flex;
-    width: 400%;
-    transition: transform 0.4s ease;
-    height: calc(100vh - 120px); /* altura ajustada ao header */
-    margin-top: 120px; /* espaço para o header fixo */
+    margin-top: calc(120px + 10px); /* espaço para header fixo */
 }
 
 /* ======= SEÇÕES ======= */
 section {
-    width: 100vw;
-    height: 100%;
-    overflow-y: auto;
-    padding: 40px;
+    padding: 40px 20px;
     box-sizing: border-box;
-    flex-shrink: 0;
 }
 #inicio { background: #e8f5e9; }
 #populacao { background: #f1f8e9; }
@@ -96,12 +87,10 @@ section p, section li {
     line-height: 1.6;
     font-size: 1.05em;
     color: #333;
-    text-align: justify;        /* justifica o texto */
-    text-justify: inter-word;   /* melhora a distribuição de espaço entre palavras */
-    hyphens: auto;              /* permite hifenização automática em palavras longas */
-    word-wrap: break-word;      /* quebra palavras longas se necessário */
-
-
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    word-wrap: break-word;
 }
 section h3 {
     color: #1b5e20;
@@ -122,7 +111,7 @@ section h4 {
     margin-top: 30px;
 }
 .card {
-    flex: 1 1 300px;
+    flex: 1 1 250px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
@@ -145,7 +134,7 @@ section h4 {
     margin: 25px 0;
 }
 .imagens-sinais img {
-    max-width: 400px;
+    max-width: 100%;
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
@@ -157,7 +146,6 @@ footer {
     background-color: #0a3d2e;
     color: #fff;
     padding: 20px 0;
-    font-family: Arial, sans-serif;
     border-top: 4px solid #1dbf73;
     text-align: center;
 }
@@ -166,30 +154,7 @@ footer a {
     text-decoration: none;
 }
 
-/* ======= SETAS ======= */
-.seta {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.5em;
-    background-color: rgba(46, 125, 50, 0.8);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    z-index: 20;
-}
-.seta:hover {
-    background-color: #1b5e20;
-    transform: translateY(-50%) scale(1.1);
-}
-#seta-esquerda { left: 20px; }
-#seta-direita { right: 20px; }
-
-/* ======= LINKS ======= */
+/* ======= LINKS ACS ======= */
 .links-acs {
     margin-top: 30px;
     padding: 15px;
@@ -202,99 +167,97 @@ footer a {
     text-decoration: underline;
     margin-bottom: 5px;
 }
-/* Ajuste das imagens para desktop */
-@media (min-width: 1024px) {
-    .imagens-sinais img {
-        max-width: 600px; /* aumenta a largura máxima para telas grandes */
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+
+/* ======= RESPONSIVO ======= */
+@media (max-width: 768px) {
+    header h1 { font-size: 1.3em; }
+    nav { gap: 10px; }
+    .cards { flex-direction: column; }
 }
 
+/* ======= ANIMAÇÃO ======= */
+@media (min-width: 1024px) {
+    .imagens-sinais img {
+        max-width: 600px;
+    }
+}
 </style>
 </head>
-
 <body>
+
 <header>
     <img src="img/logo-fameac.jpeg" alt="Logo FAMEAC" class="fade-in">
     <h1 class="fade-in">Julho Verde o Ano Inteiro</h1>
     <nav>
-        <a href="#" class="active" onclick="mudarSecao(0)">Início</a>
-        <a href="#" onclick="mudarSecao(1)">População</a>
-        <a href="#" onclick="mudarSecao(2)">Profissionais</a>
-        <a href="#" onclick="mudarSecao(3)">Sobre</a>
+        <a href="#inicio" class="active">Início</a>
+        <a href="#populacao">População</a>
+        <a href="#profissionais">Profissionais</a>
+        <a href="#sobre">Sobre</a>
     </nav>
 </header>
 
-<!-- Setas -->
-<button id="seta-esquerda" class="seta" onclick="navegar(-1)">‹</button>
-<button id="seta-direita" class="seta" onclick="navegar(1)">›</button>
-
 <main id="container">
 
-    <!-- INÍCIO -->
-    <section id="inicio" class="fade-in">
-        <h2>Bem-vindo</h2>
-        <p>O <strong>Julho Verde o Ano Inteiro</strong> é uma campanha educativa sobre câncer de cabeça e pescoço, promovendo conscientização durante todo o ano.</p>
-        <p>Explore as seções para saber mais sobre prevenção, sinais de alerta e ações voltadas à população e aos profissionais de saúde.</p>
-    </section>
+<!-- INÍCIO -->
+<section id="inicio" class="fade-in">
+    <h2>Bem-vindo</h2>
+    <p>O <strong>Julho Verde o Ano Inteiro</strong> é uma campanha educativa sobre câncer de cabeça e pescoço, promovendo conscientização durante todo o ano.</p>
+    <p>Explore as seções para saber mais sobre prevenção, sinais de alerta e ações voltadas à população e aos profissionais de saúde.</p>
+</section>
 
-    <!-- POPULAÇÃO -->
-    <section id="populacao">
-        <h2>O que é o câncer de cabeça e pescoço?</h2>
-        <p>Assim como ocorre nos demais tipos de câncer, o câncer de cabeça e pescoço se caracteriza pelo desenvolvimento anormal e acelerado de células, levando à formação de nódulos e tumores que podem comprometer a função do órgão onde se instala.</p>
-        <p>O câncer de cabeça e pescoço engloba esse distúrbio em vários órgãos, todos localizados nas regiões cefálica e cervical: boca, orofaringe, laringe, nariz, seios nasais, nasofaringe, órbita, pescoço, tireoide, couro cabeludo, pele do rosto e do pescoço.</p>
+<!-- POPULAÇÃO -->
+<section id="populacao">
+    <h2>O que é o câncer de cabeça e pescoço?</h2>
+    <p>O câncer de cabeça e pescoço é caracterizado pelo crescimento anormal e acelerado de células, formando tumores que podem comprometer órgãos dessa região.</p>
+    <p>Inclui boca, orofaringe, laringe, nariz, seios nasais, nasofaringe, órbita, pescoço, tireoide, couro cabeludo e pele do rosto e pescoço.</p>
 
-        <div class="cards">
-            <div class="card">
-                <div class="icon">🩺</div>
-                <h3>Sinais de alerta</h3>
-                <p>Procure atendimento médico se notar:</p>
-                <ul>
-                    <li>Feridas na boca ou garganta que não cicatrizam em 15 dias</li>
-                    <li>Manchas vermelhas ou brancas na boca, língua, gengivas ou palato</li>
-                    <li>Nódulos no pescoço</li>
-                    <li>Rouquidão persistente</li>
-                    <li>Dificuldade para mastigar, engolir ou falar</li>
-                    <li>Assimetria facial ou travamento da boca</li>
-                    <li>Dor ou incômodo na boca e garganta</li>
-                    <li>Sangramentos sem causa aparente</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="icon">🚭</div>
-                <h3>Fatores de risco importantes</h3>
-                <ul>
-                    <li>Tabagismo (cigarros, charutos, narguilé, rapé, fumo mascado)</li>
-                    <li>Consumo excessivo de álcool</li>
-                    <li>Infecção pelo HPV tipo 16</li>
-                    <li>Exposição solar intensa (especialmente nos lábios)</li>
-                    <li>Sobrepeso e obesidade</li>
-                    <li>Idade e gênero (mais comum em homens acima de 40 anos)</li>
-                    <li>Imunossupressão</li>
-                    <li>Exposição ocupacional a agentes químicos sem EPI adequado</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="icon">🦷</div>
-                <h3>Prevenção</h3>
-                <ul>
-                    <li>Não fume e evite álcool em excesso</li>
-                    <li>Mantenha alimentação saudável e pratique exercícios</li>
-                    <li>Higiene bucal diária</li>
-                    <li>Proteja pele e mucosas do sol</li>
-                    <li>Faça consultas regulares e procure médico ao notar sinais suspeitos</li>
-                    <li>Vacine-se contra HPV</li>
-                </ul>
-            </div>
+    <div class="cards">
+        <div class="card">
+            <div class="icon">🩺</div>
+            <h3>Sinais de alerta</h3>
+            <ul>
+                <li>Feridas na boca ou garganta que não cicatrizam em 15 dias</li>
+                <li>Manchas vermelhas ou brancas na boca, língua, gengivas ou palato</li>
+                <li>Nódulos no pescoço</li>
+                <li>Rouquidão persistente</li>
+                <li>Dificuldade para mastigar, engolir ou falar</li>
+                <li>Assimetria facial ou travamento da boca</li>
+                <li>Dor ou incômodo na boca e garganta</li>
+                <li>Sangramentos sem causa aparente</li>
+            </ul>
         </div>
-    </section>
+        <div class="card">
+            <div class="icon">🚭</div>
+            <h3>Fatores de risco importantes</h3>
+            <ul>
+                <li>Tabagismo e consumo de álcool</li>
+                <li>Infecção pelo HPV tipo 16</li>
+                <li>Exposição solar intensa</li>
+                <li>Sobrepeso e obesidade</li>
+                <li>Idade e gênero</li>
+                <li>Imunossupressão</li>
+                <li>Exposição ocupacional a agentes químicos sem EPI</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="icon">🦷</div>
+            <h3>Prevenção</h3>
+            <ul>
+                <li>Não fumar e evitar álcool em excesso</li>
+                <li>Manter alimentação saudável e praticar exercícios</li>
+                <li>Higiene bucal diária</li>
+                <li>Proteção solar</li>
+                <li>Consultas regulares</li>
+                <li>Vacina contra HPV</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-    <!-- PROFISSIONAIS -->
- <!-- PROFISSIONAIS --> 
+<!-- PROFISSIONAIS -->
+
 <section id="profissionais" class="fade-in">
-    <h2> Para Agente Comunitário de Saúde(ACS)</h2>
+    <h2>Para Agente Comunitário de Saúde (ACS)</h2>
     <p>Pesquisadores do INCA conduziram um estudo inédito, com casos registrados entre 2000 e 2017, no qual verificaram que 78,2% foram identificados em estágios avançados (III ou IV). Fatores de risco como tabagismo e consumo de bebidas alcoólicas, além de baixa escolaridade e dificuldade de acesso a serviços de saúde especializados, contribuem para o quadro.</p>
 
     <h3>MAIORIA É DE HOMENS</h3>
@@ -316,33 +279,35 @@ footer a {
     <p>Caracterizado pela formação de um nódulo nessa glândula, o câncer de tireoide atinge, de acordo com o INCA, três vezes mais mulheres do que homens. Além disso, está fortemente ligado à obesidade. Os sintomas só costumam aparecer quando a doença já está em estágio avançado. Mas casos suspeitos podem ser identificados pela presença de caroço na região.</p>
     
     <h4>Câncer de pele</h4>
-    <p>Nem todas as manifestações do câncer de pele são enquadrados como tipos de câncer de cabeça e pescoço. Ao contrário, ele está relacionado àqueles que surgem em mucosas e tecidos nesta região. Ou seja, são os cânceres na pele da face, pescoço ou couro cabeludo.</p>
+    <p>Nem todas as manifestações do câncer de pele são enquadradas como tipos de câncer de cabeça e pescoço. Ao contrário, ele está relacionado àqueles que surgem em mucosas e tecidos nesta região, como pele da face, pescoço ou couro cabeludo.</p>
     
     <h4>Tumores oculares</h4>
-    <p>São os tipos de cânceres que podem afetar desde a órbita ocular, atingir a glândula lacrimal ou o câncer da coróide, que pode prejudicar a retina. Ocorre com mais frequência entre os 55 e 60 anos e em pessoas de pele escura. Os sinais e sintomas tendem a ser tardios e geralmente caracterizam-se pela a perda de visão e por sintomas de descolamento da retina.</p>
+    <p>São tipos de cânceres que podem afetar desde a órbita ocular até a glândula lacrimal ou a coróide, prejudicando a retina. Ocorre com mais frequência entre 55 e 60 anos e em pessoas de pele escura. Os sinais e sintomas tendem a ser tardios, caracterizando-se pela perda de visão e descolamento da retina.</p>
     
     <h4>Tumores intracranianos</h4>
-    <p>Os tumores intracranianos podem envolver o cérebro e outras estruturas, como a meninge — membrana que recobre o cérebro. Em geral, esse tipo de câncer se desenvolve no início ou na fase média da idade adulta. No entanto, pode ser detectado em qualquer idade e exige atenção redobrada, pois, como a caixa craniana não tem espaço para expansão, mesmo os tumores benignos podem causar disfunção neurológica grave ou morte.</p>
+    <p>Os tumores intracranianos podem envolver o cérebro e outras estruturas, como a meninge. Em geral, se desenvolvem no início ou fase média da idade adulta, mas podem ocorrer em qualquer idade. Mesmo tumores benignos podem causar disfunção neurológica grave ou morte devido à limitação de espaço na caixa craniana.</p>
     
     <h4>Câncer da cavidade oral</h4>
-    <p>O câncer de boca pode se desenvolver nos lábios, gengivas, bochechas, céu da boca ou na língua. Esse conjunto de doenças atinge atualmente cerca de 15 mil pessoas todos os anos e pode se manifestar por meio de lesões com dificuldade de cicatrização, sangramentos, além de manchas vermelhas ou esbranquiçadas nesta região. Este tipo de câncer estará mais detalhado a seguir. Em um estudo que analisou a mortalidade por câncer de boca na região nordeste do Brasil entre 2012 e 2022 constatou que o Maranhão foi inicialmente identificado como um dos Estados com os maiores coeficientes brutos médios de mortalidade por câncer de boca na Região Nordeste. O valor médio do coeficiente bruto de mortalidade para a região Nordeste como um todo foi de 25,7. No entanto, o município de Zé Doca, no Maranhão, registrou o menor coeficiente bruto de mortalidade da região, com um valor de 1,91. O estudo ainda mostra que o Maranhão apresentou uma tendência crescente na taxa de mortalidade por câncer de boca no período de 2012 a 2022. Quando o ACS compreende o cenário epidemiológico do câncer de boca e das desigualdades regionais, ele se torna uma peça-chave na mudança desse panorama, ajudando a reduzir a mortalidade e melhorar a qualidade de vida da população.</p>
+    <p>O câncer de boca pode se desenvolver nos lábios, gengivas, bochechas, céu da boca ou na língua, afetando cerca de 15 mil pessoas por ano. Manifesta-se por lesões com dificuldade de cicatrização, sangramentos ou manchas vermelhas/esbranquiçadas. Estudos no Nordeste do Brasil mostram variação na mortalidade regional, com tendência crescente em alguns locais. <ul>Quando o ACS compreende o cenário epidemiológico e as desigualdades regionais, torna-se peça-chave na redução da mortalidade e na melhoria da qualidade de vida da população.</ul></p>   
 
     <h3>CÂNCER DE BOCA</h3>
 
     <h4>Prevenção e Fatores de Risco</h4>
-    <p>Quem fuma cigarro ou utiliza outros produtos derivados do tabaco, como cigarro de palha, de Bali, de cravo ou kreteks, fumo de rolo, tabaco mascado, rapé, charutos, cachimbos e narguilé, dentre outros, tem risco muito maior de desenvolver câncer de boca e de faringe do que não fumantes. Quanto maior o número de cigarros fumados, maior o risco de câncer. Consumo de bebidas alcoólicas. Mascar betel (mistura de semente de areca – um gênero de palmeira –, folhas de Piper betle –um tipo de pimenteira – e, geralmente, tabaco. Há outras variações desta mistura). A semente de areca libera substâncias altamente cancerígenas. Infecção pelo papilomavírus humano (HPV) tipo 16. Exposição à radiação solar (para o câncer de lábio). Excesso de gordura corporal (sobrepeso e obesidade) (Segundo o Fundo Mundial de Pesquisa em Câncer e o Instituto Americano de Pesquisa em Câncer - WCRF/AICR, na sigla na língua inglesa). Gênero e Idade – a doença é mais frequente em homens brancos acima de 40 anos. Imunosupressão. Utilização de equipamentos de proteção individual (EPI) adequados a realização de atividades de trabalho nas quais haja exposição a agentes químicos relacionados ao desenvolvimento deste tipo de câncer. É essencial que os Agentes Comunitários de Saúde (ACS) estejam atentos a esses fatores de risco porque eles estão diretamente ligados à prevenção e ao diagnóstico precoce do câncer de boca e de faringe — doenças que, quando descobertas tardiamente, têm tratamento mais difícil e maiores chances de deixar sequelas.</p>
+    <p>Fumantes ou usuários de produtos derivados do tabaco têm risco maior de câncer de boca e faringe. Outros fatores incluem consumo de álcool, mascar betel, infecção por HPV tipo 16, exposição solar (para câncer de lábio), excesso de gordura corporal, idade acima de 40 anos, imunosupressão e uso inadequado de EPIs em atividades com agentes químicos. <ul>ACS devem estar atentos a esses fatores de risco, pois estão diretamente ligados à prevenção e diagnóstico precoce, reduzindo chances de sequelas e complexidade do tratamento.</ul></p>
 
     <h4>Detecção precoce</h4>
-    <p>Campanhas de prevenção e detecção precoce em grupos de elevado risco para mudar o quadro atual. Controle do tabagismo associado a políticas de redução do consumo de álcool e investimento na capacitação de profissionais da atenção básica são caminhos que ajudariam a reduzir o número de diagnósticos tardios. As chances de cura para o câncer de cabeça e pescoço são de 90% se tratado desde cedo. O diagnóstico precoce e o rastreio fazem parte dessa medida. Atualmente não há recomendação para o rastreamento do câncer de boca e orofaringe como estratégia de detecção precoce, pois as evidências científicas atuais não são suficientes para avaliar os riscos e os benefícios do rastreamento em pessoas assintomáticas (IARC, 2023; USTaskForce, 2023). De acordo com a IARC (2023), o rastreamento em pessoas de alto risco pode reduzir a mortalidade por câncer de boca e orofaringe mas não foi possível estabelecer impacto do rastreamento na população geral, com base nos estudos disponíveis.</p>
+    <p>Campanhas de prevenção, controle do tabagismo, redução do consumo de álcool e capacitação de profissionais da atenção básica ajudam a reduzir diagnósticos tardios. O câncer de cabeça e pescoço tem chances de cura de até 90% quando tratado precocemente. Não há recomendação para rastreamento populacional, mas pessoas de alto risco podem se beneficiar de monitoramento.</p>
     
     <h4>Diagnóstico precoce</h4>
-    <p>O diagnóstico precoce do câncer de boca é a estratégia recomendada para a detecção precoce desse câncer. Os ACS são os principais vínculos da comunidade com a Estratégia de Saúde da Família e têm a oportunidade de identificar os seguintes sinais de alarme e encaminhar casos suspeitos para diagnóstico e orientação na unidade de saúde:</p>
-    
+    <p>ACS podem identificar sinais de alarme e encaminhar casos suspeitos para unidades de saúde:</p>
     <ul>
-        <li>Ulcerações persistentes por mais de 15 dias.</li>
-        <li>Placas vermelhas ou esbranquiçadas na língua, nas gengivas, no palato e na mucosa jugal que não decorrem de outra doença ou causa conhecida.</li>
+        <li>Ulcerações persistentes por mais de 15 dias</li>
+        <li>Placas vermelhas ou esbranquiçadas na língua, gengivas, palato ou mucosa jugal</li>
+        <li>Nódulos no pescoço</li>
+        <li>Rouquidão persistente</li>
+        <li>Dificuldade de mastigação, deglutição ou fala</li>
+        <li>Assimetria facial</li>
     </ul>
-
 
     <div class="imagens-sinais fade-in">
         <img src="img/icone-alerta.png" alt="Lesão suspeita na língua">
@@ -351,41 +316,32 @@ footer a {
         <img src="img/img61.png" alt="Lesão suspeita no palato duro">
     </div>
 
-    <ul>
-        <li>Nódulos no pescoço.</li>
-        <li>Rouquidão persistente.</li>
-        <li>Dificuldade de mastigação, deglutição ou fala.</li>
-        <li>Assimetria facial.</li>
-    </ul>
-
-    <p>Essas alterações suspeitas na cavidade oral devem ser investigadas e a confirmação diagnóstica realizada por meio de biópsia. Quando o câncer é confirmado, deve-se encaminhar o paciente para tratamento oncológico.</p>
-
     <h4>Sinais e sintomas</h4>
     <ul>
-        <li>Dor (dor na boca ou na garganta)</li>
-        <li>Irritação (ardência ou incômodo na boca ou garganta)</li>
-        <li>Nodulação (carocinhos ou inchaços)</li>
-        <li>Manchas (eritroplasia ou leucoplasia) (manchas vermelhas ou esbranquiçadas na boca)</li>
-        <li>Odinofagia (dor ao engolir)</li>
-        <li>Disfagia (dificuldade para engolir)</li>
-        <li>Disartria (dificuldade para falar)</li>
-        <li>Disfonia (rouquidão persistente)</li>
-        <li>Fixação da língua (dificuldade para mexer a língua)</li>
-        <li>Trismo (travamento da boca ou dificuldade para abrir a boca)</li>
-        <li>Otalgia reflexa (dor no ouvido sem causa aparente)</li>
-        <li>Dispneia (falta de ar)</li>
-        <li>Adenomegalia (caroços no pescoço)</li>
-        <li>Sangramento (sangramento na boca ou garganta)</li>
+        <li>Dor na boca ou garganta</li>
+        <li>Irritação ou ardência na boca ou garganta</li>
+        <li>Nodulação</li>
+        <li>Manchas vermelhas ou esbranquiçadas</li>
+        <li>Odinofagia</li>
+        <li>Disfagia</li>
+        <li>Disartria</li>
+        <li>Disfonia persistente</li>
+        <li>Fixação da língua</li>
+        <li>Trismo</li>
+        <li>Otalgia reflexa</li>
+        <li>Dispneia</li>
+        <li>Adenomegalia</li>
+        <li>Sangramento oral ou na garganta</li>
     </ul>
 
     <h4>Diagnóstico</h4>
-    <p>O diagnóstico do câncer de cavidade oral normalmente pode ser feito com o exame clínico, mas a confirmação depende da biópsia. Esse procedimento, na grande maioria das vezes, pode ser feito de forma ambulatorial, com anestesia local, por um profissional treinado. A biópsia ambulatorial é realizada com pinças de saca-bocado, e o material é enviado para análise histopatológica. Também podem ser feitas biópsias em cunha ou punções por agulha fina em lesões da cavidade oral ou massas cervicais. Exames de imagem, como a tomografia computadorizada, auxiliam na avaliação da extensão da tumoração. A associação entre exame clínico, biópsia e tomografia permite definir o tratamento mais adequado. Lesões iniciais podem ser avaliadas sem imagem. O diagnóstico precoce favorece tratamentos mais simples e eficazes, reduzindo sequelas e complicações.</p>
+    <p>O diagnóstico inicial é clínico, confirmado por biópsia. Biópsias podem ser ambulatoriais com anestesia local, em cunha ou por punção fina. Exames de imagem como tomografia ajudam na avaliação da extensão do tumor, permitindo tratamento adequado. Lesões iniciais podem ser avaliadas sem imagem. Diagnóstico precoce possibilita tratamentos mais simples e eficazes.</p>
     
     <h4>Tratamento</h4>
-    <p>O tratamento do câncer de cavidade oral é, na maioria dos casos, cirúrgico, podendo variar conforme o tamanho e a complexidade da lesão. Lesões pequenas geralmente exigem cirurgias simples, enquanto tumores maiores demandam procedimentos mais extensos, que podem causar sequelas funcionais. O cirurgião de cabeça e pescoço é o responsável por avaliar o estágio da doença e definir o tratamento mais adequado, podendo associar radioterapia e quimioterapia quando a cirurgia não é possível ou traria grandes prejuízos à qualidade de vida. A cirurgia pode envolver a retirada da área afetada e dos linfonodos do pescoço, com reconstrução imediata ou posterior, dependendo do caso. Em situações mais simples, basta remover a lesão e realizar o fechamento primário. Já nos casos complexos, a radioterapia complementar pode ser necessária para aumentar as chances de cura. Durante todo o processo, o acompanhamento interdisciplinar é fundamental, com atuação de diferentes profissionais da saúde antes, durante e após o tratamento, buscando prevenir complicações, preservar funções como mastigação, fala e respiração, e garantir melhor reabilitação e qualidade de vida ao paciente.</p>
+    <p>O tratamento é predominantemente cirúrgico, variando conforme tamanho e complexidade. Tumores pequenos requerem cirurgias simples; tumores maiores, procedimentos extensos, podendo causar sequelas funcionais. Radioterapia e quimioterapia podem ser associadas quando necessário. A cirurgia pode envolver retirada de área afetada e linfonodos com reconstrução. O acompanhamento interdisciplinar é fundamental para preservar funções e qualidade de vida.</p>
 
     <h4>Acompanhamento pós-tratamento</h4>
-    <p>É importante manter o acompanhamento após tratamento com consultas de rotina com equipe multidisciplinar e exames de imagem quando necessários, principalmente nos primeiros 5 anos. O ACS complementa o acompanhamento clínico especializado, proporcionando monitoramento domiciliar, apoio educacional, emocional e social. Sua atuação é fundamental para garantir adesão ao tratamento, detecção precoce de complicações e melhoria da qualidade de vida de pacientes pós-tratamento de câncer de cabeça e pescoço. Essa abordagem integrada com a equipe multiprofissional potencializa os resultados do tratamento e favorece a reintegração social do paciente.</p>
+    <p>Manter acompanhamento com equipe multidisciplinar e exames de imagem nos primeiros 5 anos. ACS complementa monitoramento, oferecendo apoio educacional, emocional e social, garantindo adesão ao tratamento, detecção precoce de complicações e melhoria da qualidade de vida pós-tratamento.</p>
 
     <h3>Saiba mais</h3>
     <p>Para mais informações sobre diagnóstico, estadiamento e tratamento de todos os tipos de câncer de cabeça e pescoço:</p>
@@ -401,13 +357,14 @@ footer a {
     </ul>
 </section>
 
+</section>
 
-    <!-- SOBRE -->
-    <section id="sobre" class="fade-in">
-        <h2>Sobre o Projeto</h2>
-        <p>Desenvolvido por <strong>Denise Pereira</strong> – Curso de Medicina, FAMEAC, para a matéria de proliferação celular ministrada pelo professor Gabriel Mota.</p>
-        <p>Alunos participantes: Denise Pereira, Paulo Roberto, Amanda Karolinne e Gustavo Mesquita.</p>
-    </section>
+<!-- SOBRE -->
+<section id="sobre" class="fade-in">
+    <h2>Sobre o Projeto</h2>
+    <p>Desenvolvido por <strong>Denise Pereira</strong> – Curso de Medicina, FAMEAC, para a matéria de proliferação celular ministrada pelo professor Gabriel Mota.</p>
+    <p>Alunos participantes: Denise Pereira, Paulo Roberto, Amanda Karolinne e Gustavo Mesquita.</p>
+</section>
 
 </main>
 
@@ -420,22 +377,39 @@ footer a {
 </footer>
 
 <script>
-let indiceAtual = 0;
-const totalSecoes = 4;
-function mudarSecao(indice) {
-    const main = document.getElementById('container');
-    const links = document.querySelectorAll('nav a');
-    main.style.transform = `translateX(-${indice * 100}vw)`;
-    links.forEach((link, i) => link.classList.toggle('active', i === indice));
-    indiceAtual = indice;
-}
-function navegar(direcao) {
-    indiceAtual += direcao;
-    if (indiceAtual < 0) indiceAtual = 0;
-    if (indiceAtual >= totalSecoes) indiceAtual = totalSecoes - 1;
-    mudarSecao(indiceAtual);
-}
+// Scroll suave ajustando header fixo
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav a');
+const headerHeight = document.querySelector('header').offsetHeight;
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - headerHeight - 10;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        const offsetPosition = targetSection.offsetTop - headerHeight - 10;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    });
+});
 </script>
+
 </body>
 </html>
+
 
