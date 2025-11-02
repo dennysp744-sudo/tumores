@@ -70,25 +70,23 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 400%; /* mantém o scroll horizontal */
+    width: 400%; /* mantém rolagem horizontal */
     transition: transform 0.4s ease;
-    height: auto; /* ajusta altura de acordo com o conteúdo */
+    height: auto; /* altura ajusta-se ao conteúdo */
     scroll-snap-type: x mandatory;
-    overflow-x: hidden; /* impede barra horizontal visível */
+    overflow-x: hidden;
 }
 
-
 /* ======= SEÇÕES ======= */
-section  {
+section {
     width: 100vw;
     flex-shrink: 0;
     scroll-snap-align: start;
-    overflow-y: auto; /* garante que o conteúdo possa rolar verticalmente se for grande */
+    overflow-y: auto; /* habilita scroll vertical interno */
     padding: 40px;
     box-sizing: border-box;
-    height: auto; /* altura agora ajusta-se ao conteúdo */
+    height: auto;
 }
-
 #inicio { background: var(--cor-fundo); }
 #populacao { background: #f1f8e9; }
 #profissionais { background: #e0f2f1; }
@@ -106,18 +104,12 @@ section p, section li {
     line-height: 1.6;
     font-size: 1.05em;
     color: #333;
+    text-align: justify; /* justifica o texto */
 }
 section h3 {
     color: #1b5e20;
     margin-top: 25px;
     font-size: 1.3em;
-}
-section p, section li {
-    line-height: 1.6;
-    font-size: 1.05em;
-    color: #333;
-    /* Linha adicionada para justificar o texto */
-    text-align: justify; 
 }
 
 /* ======= CARDS ======= */
@@ -425,7 +417,6 @@ footer {
     </section>
 
 </main>
-
 <footer>
   <div style="max-width: 1100px; margin: 0 auto;">
     <p><strong>Realização:</strong> FAMEAC – Faculdade de Medicina de Açailândia</p>
@@ -450,11 +441,8 @@ function navegar(direcao) {
     if (indiceAtual >= totalSecoes) indiceAtual = totalSecoes - 1;
     mudarSecao(indiceAtual);
 }
+document.getElementById('seta-esquerda').addEventListener('click', () => navegar(-1));
+document.getElementById('seta-direita').addEventListener('click', () => navegar(1));
 </script>
 </body>
 </html>
-
-
-
-
-
