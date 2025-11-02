@@ -96,6 +96,12 @@ section p, section li {
     line-height: 1.6;
     font-size: 1.05em;
     color: #333;
+    text-align: justify;        /* justifica o texto */
+    text-justify: inter-word;   /* melhora a distribuição de espaço entre palavras */
+    hyphens: auto;              /* permite hifenização automática em palavras longas */
+    word-wrap: break-word;      /* quebra palavras longas se necessário */
+
+
 }
 section h3 {
     color: #1b5e20;
@@ -195,6 +201,15 @@ footer a {
     color: #1b5e20;
     text-decoration: underline;
     margin-bottom: 5px;
+}
+/* Ajuste das imagens para desktop */
+@media (min-width: 1024px) {
+    .imagens-sinais img {
+        max-width: 600px; /* aumenta a largura máxima para telas grandes */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 </style>
